@@ -3,11 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      headings: " Bebas Neue,sans-serif",
+      headings: "Roboto Slab,sans-serif",
+      body: "Inter,sans-serif",
     },
     extend: {
       colors: {
-        colo: "#EDFF7A",
+        brand: "#F16331",
       },
     },
   },

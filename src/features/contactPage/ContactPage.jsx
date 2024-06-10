@@ -1,9 +1,11 @@
+import Navbar from "../../components/Navbar"
+
 function ContactPage() {
  return (
-  <div>
+  <section>
+   <Navbar/>
    im contact page
-  </div>
+  </section>
  )
 }
-
 export default ContactPage
