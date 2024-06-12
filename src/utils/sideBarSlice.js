@@ -1,0 +1,3 @@
+const initialState ={
+ open:false
+}
