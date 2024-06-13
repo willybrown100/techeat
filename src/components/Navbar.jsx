@@ -1,13 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import { FaBars } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleBar } from "../utils/sideBarSlice";
 
 function Navbar() {
+  const dispatch=useDispatch()
+  const open = useSelector((state)=>state.sideBar.open)
+  console.log(open)
+  const handleClick =function(){
+dispatch(toggleBar(!open))
+  }
  return (
    <nav className=" bg-white  py-4 px-9 ">
      <div className="flex items-center justify-between">
        <Logo />
-       <button className="text-stone-900 text-2xl sm:hidden">
+       <button className="text-stone-900 text-2xl sm:hidden" onClick={handleClick}>
          <FaBars />
        </button>
 
@@ -30,7 +38,7 @@ function Navbar() {
          </li>
          <li>
            <NavLink
-             to="/aboutus"
+             to="/about"
              className="text-xl capitalize text-black font-semibold"
            >
              aboutUs

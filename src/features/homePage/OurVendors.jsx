@@ -6,7 +6,7 @@ function OurVendors() {
        <h2 className="text-brand text-center my-8 font-semibold">
          our vendors
        </h2>
-       <div className="md:grid md:grid-cols-3 gap-4">
+       <div className="grid grid-cols-2 md:grid md:grid-cols-3 gap-4">
          <img src="\images\Frame 1171277093.png" alt="" />
          <img src="\images\Frame 1171277090.png" alt="" />
          <img src="\images\Frame 1171277089.png" alt="" />

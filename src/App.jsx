@@ -8,6 +8,8 @@ function App() {
  <Routes>
 <Route path="/" element={<HomePage/>}/>
 <Route path="contact" element={<ContactPage/>}/>
+<Route path="menu" element={<ContactPage/>}/>
+<Route path="about" element={<ContactPage/>}/>
  </Routes>
     </BrowserRouter>
   )
