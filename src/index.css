@@ -74,8 +74,15 @@ a{
     line-height: 1;
   }
 }
-.contactHeader{
-    height: 100dvh ;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-    url(/public\images/pizza5.jpeg) center/cover no-repeat scroll;
+@media screen and (min-width:768px){
+  .contactHeader{
+      height: 50dvh ;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+      url(/public\images/pizza5.jpeg) center/cover no-repeat scroll;
+  }
+}
+.signUp{
+  height: 90dvh ;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+      url(/public\images/pizza1.webp) center/cover no-repeat scroll;
 }

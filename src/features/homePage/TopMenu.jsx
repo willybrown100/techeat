@@ -42,7 +42,11 @@ function TopMenu() {
   const className = "max-w-[1300px] w-[95vw] py-4 m-auto";
   return (
     <section className={`${className}`}>
-      <h2 className="text-brand font-headings font-semibold text-center">our top menu</h2>
+      <div className="my-6">
+      <div className="w-[14rem] h-[0.2rem] bg-brand m-auto"></div>
+      <h3 className="text-brand font-headings font-semibold text-center">our top menu</h3>
+      <div className="w-[14rem] h-[0.2rem] bg-brand m-auto"></div>
+      </div>
       <Carousel
         responsive={responsive}
         autoPlay={true}

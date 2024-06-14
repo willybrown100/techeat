@@ -56,7 +56,7 @@ dispatch(toggleBar(!open))
        <ul className=" hidden  md:flex items-center  justify-between gap-6">
          <li>
            <Link
-             to=""
+             to="/signin"
              className="capitalize text-brand border border-brand py-[2px] px-4 font-semibold rounded-md  "
            >
              login
@@ -64,7 +64,7 @@ dispatch(toggleBar(!open))
          </li>
          <li className="text-stone-100">
            <Link
-             to=""
+             to="/signup"
              className=" capitalize font-semibold py-[4px] px-2 rounded-md bg-brand text-white"
            >
              sign Up

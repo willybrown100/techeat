@@ -1,6 +1,13 @@
 import { BrowserRouter,Route, Routes } from "react-router-dom"
 import HomePage from "./features/homePage/HomePage"
 import ContactPage from "./features/contactPage/ContactPage"
+import Signin from "./features/signin/Signin"
+import Login from "./features/signup/SignUp"
+import SignUp from "./features/signup/SignUp"
+import PageNotFound from "./components/PageNotFound"
+import Menu from "./features/menu/Menu"
+import Aboutus from "./features/homePage/Aboutus"
+import AboutUs from "./features/aboutus/AboutUs"
 
 function App() {
   return (
@@ -8,8 +15,11 @@ function App() {
  <Routes>
 <Route path="/" element={<HomePage/>}/>
 <Route path="contact" element={<ContactPage/>}/>
-<Route path="menu" element={<ContactPage/>}/>
-<Route path="about" element={<ContactPage/>}/>
+<Route path="menu" element={<Menu/>}/>
+<Route path="about" element={<AboutUs/>}/>
+<Route path="signin" element={<Signin/>}/>
+<Route path="signup" element={<SignUp/>}/>
+<Route path="*" element={<PageNotFound/>}/>
  </Routes>
     </BrowserRouter>
   )

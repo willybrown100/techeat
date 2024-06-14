@@ -23,7 +23,7 @@ function Sidebar() {
     >
       <div className="py-16 grid grid-rows-[auto,1fr,auto] gap-8 h-screen">
         <div className="mx-auto">
-        <Logo />
+          <Logo />
         </div>
         <div className="flex flex-col">
           <NavLink
@@ -39,7 +39,7 @@ function Sidebar() {
           <NavLink
             to="/about"
             className="text-stone-900 p-4 capitalize flex gap-2 items-center hover:bg-stone-300 transition-all duration-300 tracking-[2px] text-xl"
-            // onClick={closeBar}
+            onClick={closeBar}
           >
             <span>
               <HiBuildingOffice2 />
@@ -49,7 +49,7 @@ function Sidebar() {
           <NavLink
             to="/contact"
             className="text-stone-900 p-4 capitalize flex gap-2 items-center tracking-[2px] hover:bg-stone-300 transition-all duration-300 text-xl"
-            // onClick={closeBar}
+            onClick={closeBar}
           >
             <span>
               <HiChatBubbleLeftEllipsis />
@@ -58,38 +58,59 @@ function Sidebar() {
           </NavLink>
 
           <NavLink
-            to="/product"
+            to="/menu"
             className="text-stone-900 p-4 capitalize flex gap-2 items-center hover:bg-stone-300 transition-all duration-300 tracking-[2px] text-xl"
-            // onClick={closeBar}
+            onClick={closeBar}
           >
             <span>
-              <FaBowlFood/>
+              <FaBowlFood />
             </span>
             menu
           </NavLink>
+          <div>
+          
+            <ul className="  flex flex-col p-4 gap-6">
+              <li>
+                <Link
+                  to="/signin"
+                  className="capitalize text-brand border border-brand py-[2px] px-4 font-semibold rounded-md  "
+                >
+                  login
+                </Link>
+              </li>
+              <li className="text-stone-100">
+                <Link
+                  to="/signup"
+                  className=" capitalize font-semibold py-[4px] px-2 rounded-md bg-brand text-white"
+                >
+                  sign Up
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="flex gap-3 justify-center ">
           <Link
             to="home"
-            className="text-amber-800 text-2xl transition-all hover:text-amber-500 duration-300"
+            className="text-brand text-2xl transition-all hover:text-amber-500 duration-300"
           >
             <FaFacebookF />
           </Link>
           <Link
             to="contact"
-            className="text-amber-800 text-2xl transition-all hover:text-amber-500 duration-30"
+            className="text-brand text-2xl transition-all hover:text-amber-500 duration-30"
           >
             <FaTwitter />
           </Link>
           <Link
             to="about"
-            className="text-amber-800 text-2xl transition-all hover:text-amber-500 duration-30"
+            className="text-brand text-2xl transition-all hover:text-amber-500 duration-30"
           >
             <FaInstagram />
           </Link>
           <Link
             to="about"
-            className="text-amber-800 text-2xl transition-all hover:text-amber-500 duration-30"
+            className="text-brand text-2xl transition-all hover:text-amber-500 duration-30"
           >
             <FaWhatsapp />
           </Link>

@@ -1,7 +1,7 @@
 function Menu() {
  return (
-  <div>
-   
+  <div className="text-black">
+   im menu
   </div>
  )
 }
