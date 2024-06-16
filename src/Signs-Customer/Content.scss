@@ -1,0 +1,12 @@
+.Input-Data input {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    height: 100%;
+    width: 100%;
+    border-bottom: 2px solid silver;
+}
+input::placeholder {
+    color: #ccc;
+    font-size: 8px;
+}
