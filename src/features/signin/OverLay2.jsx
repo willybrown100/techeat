@@ -1,6 +1,5 @@
 import React from "react";
 import Contact from "./Signin-com/Contact";
-// import Logo2 from "./Signin-com/Logo2";
 
 const OverLay2 = () => {
   return (
@@ -10,7 +9,6 @@ const OverLay2 = () => {
           <div>
             <Contact />
           </div>
-          {/* <Logo2 /> */}
         </div>
       </div>
     </div>

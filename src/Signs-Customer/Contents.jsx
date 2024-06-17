@@ -17,7 +17,7 @@ const Contents = () => {
         <div className="flex justify-between items-center mt-[2rem]">
           <div className="flex gap-[.6rem] items-center">
             <div className="">
-              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <input className="accent-orange-500" type="radio" id="html" name="fav_language" value="HTML" />
             </div>
             <span>
               <h4 className="text-[10px] mt-[.4rem]  backdrop-blur-xl bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500">
@@ -27,7 +27,7 @@ const Contents = () => {
           </div>
           <div className="flex gap-[.6rem] items-center">
             <div className="">
-              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <input className="accent-orange-500" type="radio" id="html" name="fav_language" value="HTML" />
             </div>
             <span>
               <h4 className="text-[10px] mt-[.4rem]  backdrop-blur-xl  bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500">
@@ -68,18 +68,18 @@ const Contents = () => {
         </div>
         <div className="flex justify-center items-center gap-[1rem]">
           <span>
-            <input type="checkbox" />
+            <input className="accent-orange-500" type="checkbox" />
           </span>
           <span>
             <p className="text-[10px] mt-[1rem]">
               I have read to understand the{" "}
-              <Link to="">
+              <Link to="/Policy">
                 <span className="font-bold text-orange-500 cursor-pointer">
                   Privacy Policy
                 </span>
               </Link>
               and agree to the
-              <Link to="">
+              <Link to="/TermsOfService">
                 <span className="font-bold text-orange-500 cursor-pointer">
                   Terms of service
                 </span>
