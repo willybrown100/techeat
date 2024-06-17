@@ -74,6 +74,13 @@ a{
     line-height: 1;
   }
 }
+
+.aboutUs{
+  height: 50dvh ;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+    url(/images/Herobg.png) center/cover no-repeat scroll;
+}
+
 @media screen and (min-width:768px){
   .contactHeader{
       height: 50dvh ;
