@@ -12,10 +12,9 @@ const SignUp = () => {
               src="/images/cover001.png"
               placeholder="blur"
               alt="Front-View"
-            />
+            />~
           </div>
         </div>
-
         <OverLay />
       </div>
     </div>

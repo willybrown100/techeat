@@ -8,8 +8,8 @@ import PageNotFound from "./components/PageNotFound";
 import Menu from "./features/menu/Menu";
 import Aboutus from "./features/homePage/Aboutus";
 import AboutUs from "./features/aboutus/AboutUs";
-import Policy from "./features/PrivacyPolicy/Policy";
-import TermsOfService from "./features/PrivacyPolicy/TermsOfService";
+import TermsOfService from "./features/signin/PrivacyPolicy/TermsOfService";
+import Policy from "./features/signin/PrivacyPolicy/Policy";
 
 function App() {
   return (
