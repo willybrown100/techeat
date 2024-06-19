@@ -4,18 +4,25 @@ import { IoIosEyeOff } from "react-icons/io"; // Import eye-off icon
 import { Link } from "react-router-dom"; // Import Link component for navigation
 import Button from "./Signup-Ui/Button"; // Import Button component
 import Ven from "../Vendor/Ven";
+import { IoIosEye } from "react-icons/io";
 
 const Contents = () => {
   // Declare a state variable 'toggle' with a default value of false
   const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // Handler to toggle the state when radio buttons are clicked
   const handleToggle = () => {
     setToggle(!toggle);
   };
 
+  const ToggleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className="content-wrapper form-container absolute bg-opacity-10 bg-white backdrop-blur-xl shadow-2xl w-[550px] h-[44rem] top-[38rem] right-[5rem] p-[5rem]">
+    <div className="content-wrapper form-container absolute bg-opacity-10 bg-white backdrop-blur-xl shadow-2xl w-[550px] h-[44rem] top-[38.8rem] right-[5rem] p-[5rem]">
+     
       <div className="flex justify-between items-center mt-[-2rem]">
         <div className="flex gap-[.6rem] items-center">
           <input
@@ -25,7 +32,10 @@ const Contents = () => {
             name="user_type"
             value="Customer"
           />
-          <h4 className="text-[10px] mt-[.4rem] backdrop-blur-xl bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500">
+          <h4
+            onClick={handleToggle}
+            className="text-[10px] mt-[.4rem] backdrop-blur-xl bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500"
+          >
             Sign up as a customer
           </h4>
         </div>
@@ -37,7 +47,10 @@ const Contents = () => {
             name="user_type"
             value="Vendor"
           />
-          <h4 className="text-[10px] mt-[.4rem] backdrop-blur-xl bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500">
+          <h4
+            onClick={handleToggle}
+            className="text-[10px] mt-[.4rem] backdrop-blur-xl bg-opacity-30 p-[.4rem] shadow-2xl shadow-slate-100 cursor-pointer rounded-full hover:text-orange-500"
+          >
             Sign up as a vendor
           </h4>
         </div>
@@ -47,10 +60,10 @@ const Contents = () => {
       {toggle ? (
         <>
           <form className="">
-            <h1 className="font-Roboto Slab w-[400px] font-bold text-[22px] text-left text-white">
+            <h1 className="font-Roboto Slab w-[400px] font-bold text-[22px] text-left text-white mt-[1rem]">
               Welcome to TECH EATS
             </h1>
-            <h4 className="text-[10px] w-[200px] text-left text-slate-400">
+            <h4 className="text-[10px] w-[200px] text-left text-slate-400 mt-[1rem]">
               Fuel your mind with tech skills and your body with gourmet meals
             </h4>
 
@@ -75,12 +88,22 @@ const Contents = () => {
               <label className="text-[12px]">Password</label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={!open === false ? "password" : "text"}
                   className="MainTime"
                   placeholder="Enter your Password"
                 />
-                <span className="absolute right-3">
-                  <IoIosEyeOff />
+                <span className="absolute right-3 cursor-pointer">
+                  {open ? (
+                    <IoIosEyeOff
+                      className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+                      onClick={ToggleOpen}
+                    />
+                  ) : (
+                    <IoIosEye
+                      onClick={ToggleOpen}
+                      className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+                    />
+                  )}
                 </span>
               </div>
             </div>
@@ -132,7 +155,7 @@ const Contents = () => {
         </>
       ) : (
         <>
-          <Ven/>
+          <Ven />
         </> // Rendered when 'toggle' is false
       )}
     </div>

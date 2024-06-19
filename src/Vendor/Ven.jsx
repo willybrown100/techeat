@@ -1,19 +1,30 @@
 import React from "react";
 import "./../Signs-Customer/Content.scss"; // Import stylesheet
+import { useState } from "react";
 import { IoIosEyeOff } from "react-icons/io"; // Import eye-off icon
 import { Link } from "react-router-dom"; // Import Link component for navigation
 import Button from "./../Signs-Customer/Signup-Ui/Button"; // Import Button component
+import { IoIosEye } from "react-icons/io";
+import StepperPage from "../components/Stepper/StepperPage";
+
 
 const Ven = () => {
+  const [open, setOpen] = useState(false);
+
+  const ToggleOpen = () => {
+    setOpen(!open);
+  };
   return (
     <div>
+       
       <form className="">
-        <h1 className="font-Roboto Slab w-[400px] font-bold text-[22px] text-left text-white">
-        Lets spice up your food brands visibility
+      
+        <h1 className="font-Roboto Slab w-[400px] font-bold text-[18px] text-left text-white">
+          Lets spice up your food brands visibility
         </h1>
         <h4 className="text-[10px] w-[250px] text-left text-slate-400">
-        Elevate Your Food Brand's Visibility with Innovative Strategies to Captivate and Engage
-        your Target Audience
+          Elevate Your Food Brand's Visibility with Innovative Strategies to
+          Captivate and Engage your Target Audience
         </h4>
 
         <div className="mt-[1rem]">
@@ -37,12 +48,22 @@ const Ven = () => {
           <label className="text-[12px]">Password</label>
           <div className="relative">
             <input
-              type="password"
+              type={!open === false ? "Password" : "text"}
               className="MainTime"
               placeholder="Enter your Password"
             />
-            <span className="absolute right-3">
-              <IoIosEyeOff />
+            <span className="absolute right-3 cursor-pointer">
+              {open ? (
+                <IoIosEyeOff
+                  className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+                  onClick={ToggleOpen}
+                />
+              ) : (
+                <IoIosEye
+                  onClick={ToggleOpen}
+                  className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+                />
+              )}
             </span>
           </div>
         </div>
@@ -91,6 +112,7 @@ const Ven = () => {
           </Link>
         </p>
       </form>
+      <StepperPage />
     </div>
   );
 };
