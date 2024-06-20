@@ -16,7 +16,7 @@ function PromoSection() {
             first order when you <br /> <br /> use this promo code{" "}
             <span className="text-white">"TECH"</span>
           </h3>
-          <div className="">
+          <div className="flex justify-center md:block">
           <Button type="promo">shop Now</Button>
           </div>
         </div>
