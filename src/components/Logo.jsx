@@ -1,7 +1,7 @@
 function Logo() {
  return (
   <div>
-   <img src="/images/logo.png" alt="img" className="w-[4rem]"/>
+   <img src="/images/logo.png" alt="img" className="w-[7rem]"/>
   </div>
  )
 }

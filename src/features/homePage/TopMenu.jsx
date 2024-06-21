@@ -39,7 +39,7 @@ const menu = [
  
 ];
 function TopMenu() {
-  const className = "max-w-[1300px] w-[95vw] py-4 m-auto";
+  const className = "max-w-[1170px] w-[90vw] py-4 m-auto";
   return (
     <section className={`${className}`}>
       <div className="my-6">
@@ -73,7 +73,7 @@ function TopMenu() {
   },
 desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 3.5
   },
 tablet: {
   breakpoint: { max: 1024, min: 464 },
