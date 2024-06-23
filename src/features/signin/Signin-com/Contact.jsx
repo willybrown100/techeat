@@ -5,6 +5,7 @@ import ButtonSignin from "./ButtonSignin";
 import { useState } from "react";
 import Vend2 from "../../../Vendor/Vend2";
 import { IoIosEye } from "react-icons/io";
+// import Verification from "../../../components/Verification/Verification";
 
 const Contact = () => {
   const [toggle, setToggle] = useState(false);
@@ -164,6 +165,7 @@ const Contact = () => {
         </>
       ) : (
         <Vend2 />
+        // <Verification/>
       )}
     </div>
   );

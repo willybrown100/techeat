@@ -8,6 +8,22 @@
   width: 100%;
 
 } */
+.step {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: orange;
+}
+
+.step.active {
+  border-color: orange;
+  background-color: #ebf8ff;
+}
+
 
 img{
   width: 100%;

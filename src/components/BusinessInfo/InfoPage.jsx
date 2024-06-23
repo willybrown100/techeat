@@ -1,7 +1,9 @@
 import React from "react";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-export default function InfoPage() {
+
+const InfoPage = () => {
   return (
     <div>
       <div>
@@ -67,3 +69,4 @@ export default function InfoPage() {
     </div>
   );
 }
+export default InfoPage;

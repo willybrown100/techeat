@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { TiDownloadOutline } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 export default function Verification() {
   return (
@@ -27,7 +28,9 @@ export default function Verification() {
           </div>
 
           <div className="Input-Data mt-[1rem]">
-            <label className="text-[12px]">National Identification Number (NIN)</label>
+            <label className="text-[12px]">
+              National Identification Number (NIN)
+            </label>
             <div className="relative">
               <input
                 type="Password"
