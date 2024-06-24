@@ -17,10 +17,10 @@ const StepperPage = () => {
   };
 
   return (
-    <div className="absolute top-[5rem] left-[3rem] flex items-center justify-center bg-transparent">
+    <div className="absolute top-[4.5rem] left-[3rem] flex items-center justify-center bg-transparent h-[34rem]">
       <div className="bg-transparent p-8 rounded-lg shadow-lg w-full max-w-md">
         {/* CIRCULAR DIV FOR THE STEP MOVEMENT */}
-        <div className="flex justify-between items-center mb-8 w-[5rem] ml-[8rem]">
+        <div className="flex justify-between items-center mb-[5rem] w-[5rem] ml-[9rem]">
           <div className={`step ${step >= 1 ? "active" : ""}`}></div>
           <div className={`step ${step >= 2 ? "active" : ""}`}></div>
           <div className={`step ${step >= 3 ? "active" : ""}`}></div>
@@ -29,20 +29,26 @@ const StepperPage = () => {
         {/* BUSINESS REGISTRATION PHASE */}
 
         {step === 1 && (
-          <div>
-            <h2 className="text-2xl font-semibold mb-4 text-slate-800">Registration</h2>
+          <div className="mt-[-2rem]">
+            <h2 className="text-[16px] font-extrabold mb-4 text-white">
+              Lets spice up your food brands visibility!
+            </h2>
+            <h4 className="text-[10px] w-[300px] text-slate-300 mt-[1rem]">
+              Elevate Your Food Brand's Visibility with Innovative Strategies to
+              Captivate and Engage your Target Audience
+            </h4>
             <div>
+              {/* <div className="mb-[1rem]">
+                <FaRegArrowAltCircleLeft className="text-orange-500 " />
+              </div> */}
               <div>
-                <FaRegArrowAltCircleLeft className="text-black" />
-              </div>
-              <div>
-                <h1 className="font-Roboto Slab w-[400px] font-bold text-[18px] text-left text-white">
+                {/* <h1 className="font-Roboto Slab w-[400px] font-bold text-[12px] text-left text-white">
                   Business Information
                 </h1>
                 <h4 className="text-[10px] w-[250px] text-left text-slate-400">
                   Please provide the required information of your business for
                   future reference purposes
-                </h4>
+                </h4> */}
 
                 <div className="mt-[1rem]">
                   <label className="text-[12px]">Business Name</label>
@@ -92,7 +98,7 @@ const StepperPage = () => {
                 </div>
                 <button
                   onClick={nextStep}
-                  className="w-full h-[3.2rem] bg-orange-500"
+                  className="w-full h-[3.2rem] bg-orange-500 font-bold"
                 >
                   Proceed
                 </button>
@@ -106,10 +112,10 @@ const StepperPage = () => {
         {step === 2 && (
           <div>
             <div>
-              <div>
+              <div className="mb-[.5rem]">
                 <FaRegArrowAltCircleLeft
                   onClick={prevStep}
-                  className="text-black"
+                  className="text-slate-500 cursor-pointer w-[1.1rem] h-[1.1rem]"
                 />
               </div>
               <div>
@@ -120,13 +126,15 @@ const StepperPage = () => {
                   We would require you to upload a photo of yourself and your
                   NIN number for further legibility proof.
                 </h4>
-                <div className="w-[10rem] h-[18rem] border-dashed">
-                  <button className="flex justify-center items-center bg-orange-500">
-                    <span className="flex gap-2">
-                      <p className="text-slate-100">Browse</p>
-                      <TiDownloadOutline />
-                    </span>
-                  </button>
+                <div className="flex justify-center items-center border-dashed border-white shadow-2xl rounded">
+                  <div className="w-[12rem] h-[18rem] flex justify-center items-center">
+                    <button className="flex justify-center items-center bg-orange-500 pl-2 pr-2 pt-3">
+                      <span className="flex gap-2 justify-center items-center">
+                        <p className="text-slate-100 font-bold">Browse</p>
+                        <TiDownloadOutline className="mt-[-1rem]" />
+                      </span>
+                    </button>
+                  </div>
                 </div>
 
                 <div className="Input-Data mt-[1rem]">
@@ -162,7 +170,7 @@ const StepperPage = () => {
                 </div>
                 <button
                   onClick={nextStep}
-                  className="w-full h-[3.2rem] bg-orange-500"
+                  className="w-full h-[3.2rem] bg-orange-500 font-bold"
                 >
                   Submit
                 </button>
@@ -174,25 +182,22 @@ const StepperPage = () => {
         {/* GET STARTED PHASE */}
 
         {step === 3 && (
-          <div>
+          <div className="h-[22rem]">
             <FaRegArrowAltCircleLeft
               onClick={prevStep}
-              className="text-black"
+              className="text-slate-500 w-[1.5rem] h-[1.5rem] cursor-pointer mt-[6rem]"
             />
-            <div>
+            <div className="mt-[3rem] w-full">
               <div className="flex justify-center">
-                <GiShakingHands className="bg-slate-300 text-orange-500 w-[12rem] h-[12rem] rounded-full" />
+                <GiShakingHands className=" text-black bg-orange-500 w-[6rem] h-[6rem] rounded-full mt-[-3rem] mb-[3rem]" />
               </div>
-              <p className="text-black">
+              <p className="text-slate-200 text-center w-full text-[12px]">
                 Thank you for submitting the details. we will review and respond
                 to you as soon as possible.
               </p>
-              <button>Let’s get started</button>
-            </div>
-            <div className="flex justify-between">
               <Link to="/Signin">
-                <button className="bg-green-500 text-white p-2 rounded">
-                  Submit
+                <button className="bg-orange-500 w-full h-[3rem] shadow-2xl mt-[3rem] font-bold">
+                  Let’s get started!
                 </button>
               </Link>
             </div>

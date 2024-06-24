@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <div className="absolute left-[8rem] bg-opacity-10 bg-white backdrop-blur-xl shadow-2xl w-[550px] h-[45rem] top-[38.8rem] p-[5rem]">
-      <div className="flex justify-between items-center mt-[-2rem]">
+      <div className="flex justify-between items-center mt-[-1rem]">
         <div className="flex gap-[.6rem] items-center">
           <div className="">
             <input
