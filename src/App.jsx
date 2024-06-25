@@ -13,6 +13,7 @@ import Policy from "./features/signin/PrivacyPolicy/Policy";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import AppLayout from "./components/AppLayout";
 
  const queryClient=new QueryClient({
   defaultOptions:{
@@ -28,6 +29,9 @@ function App() {
 <ReactQueryDevtools initialIsOpen={false}/>
     <BrowserRouter>
       <Routes>
+        <Route element={<AppLayout/>}>
+        
+        </Route>
         <Route path="/" element={<HomePage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="menu" element={<Menu />} />
