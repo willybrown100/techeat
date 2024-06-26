@@ -27,7 +27,7 @@ const Contents = () => {
   };
 
   return (
-    <div className="content-wrapper form-container absolute bg-opacity-10 bg-white backdrop-blur-xl shadow-2xl w-[550px] h-[44rem] top-[38.8rem] right-[5rem] p-[5rem]">
+    <div className="content-wrapper form-container absolute bg-opacity-10 bg-white backdrop-blur-xl w-[550px] h-[44rem] top-[38.8rem] right-[5rem] p-[5rem]">
       <div className="flex justify-between items-center mt-[-2rem]">
         <div className="flex gap-[.6rem] items-center">
           <input
@@ -161,7 +161,7 @@ const Contents = () => {
         </>
       ) : (
         <>
-          <StepperPage/>
+          <StepperPage />
         </> // Rendered when 'toggle' is false
       )}
     </div>

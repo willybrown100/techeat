@@ -3,12 +3,13 @@ import InfoPage from "../BusinessInfo/InfoPage";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { TiDownloadOutline } from "react-icons/ti";
 import { GiShakingHands } from "react-icons/gi";
+import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom";
 
 const StepperPage = () => {
   const [step, setStep] = useState(1);
 
-  const nextStep = () => {
+  const nextStep = () => {  
     setStep(step + 1);
   };
 
@@ -18,7 +19,7 @@ const StepperPage = () => {
 
   return (
     <div className="absolute top-[4.5rem] left-[3rem] flex items-center justify-center bg-transparent h-[34rem]">
-      <div className="bg-transparent p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-transparent p-8 rounded-lg w-full max-w-md">
         {/* CIRCULAR DIV FOR THE STEP MOVEMENT */}
         <div className="flex justify-between items-center mb-[5rem] w-[5rem] ml-[9rem]">
           <div className={`step ${step >= 1 ? "active" : ""}`}></div>
@@ -189,7 +190,11 @@ const StepperPage = () => {
             />
             <div className="mt-[3rem] w-full">
               <div className="flex justify-center">
-                <GiShakingHands className=" text-black bg-orange-500 w-[6rem] h-[6rem] rounded-full mt-[-3rem] mb-[3rem]" />
+                <img
+                  src="/images/Group.png"
+                  alt=""
+                  className=" text-black w-[6rem] h-[6rem] rounded-full mt-[-3rem] mb-[3rem]"
+                />
               </div>
               <p className="text-slate-200 text-center w-full text-[12px]">
                 Thank you for submitting the details. we will review and respond
