@@ -22,9 +22,9 @@ export default function VisionandMission() {
 
           <div className="flex flex-col">
             <div>
-              <h3 className="text-brand hidden md:block font-headings">
+              {/* <h3 className="text-brand hidden md:block font-headings">
                 vision statement
-              </h3>
+              </h3> */}
               <p className="font-body md:text-left my-2 text-center text-stone-300">
                 Empowering tech Studio students to satisfy their cravings and
                 supporting the Tech Studio community, one delicious bite at a
@@ -32,9 +32,9 @@ export default function VisionandMission() {
               </p>
             </div>
             <div>
-              <h3 className="text-brand font-headings hidden md:block ">
+              {/* <h3 className="text-brand font-headings hidden md:block ">
                 mission statement
-              </h3>
+              </h3> */}
               <p className="font-body text-center my-2 md:text-left text-stone-300">
                 {" "}
                 At TechEats, our mission is to revolutionize the way students
