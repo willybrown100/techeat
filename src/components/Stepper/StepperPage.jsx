@@ -18,10 +18,10 @@ const StepperPage = () => {
   };
 
   return (
-    <div className="absolute top-[4.5rem] left-[3rem] flex items-center justify-center bg-transparent h-[34rem]">
-      <div className="bg-transparent p-8 rounded-lg w-full max-w-md">
+    <div className="absolute top-[4.5rem] xl:left-[3rem] left-0 flex items-center justify-center xl:bg-transparent h-[34rem]">
+      <div className="xl:bg-transparent xl:p-8 p-3 rounded-lg w-full max-w-md">
         {/* CIRCULAR DIV FOR THE STEP MOVEMENT */}
-        <div className="flex justify-between items-center mb-[5rem] w-[5rem] ml-[9rem]">
+        <div className="flex justify-between items-center mb-[5rem] w-[5rem] xl:ml-[9rem] ml-[8rem]">
           <div className={`step ${step >= 1 ? "active" : ""}`}></div>
           <div className={`step ${step >= 2 ? "active" : ""}`}></div>
           <div className={`step ${step >= 3 ? "active" : ""}`}></div>
@@ -30,7 +30,7 @@ const StepperPage = () => {
         {/* BUSINESS REGISTRATION PHASE */}
 
         {step === 1 && (
-          <div className="mt-[-2rem]">
+          <div className="xl:mt-[-2rem]">
             <h2 className="text-[16px] font-extrabold mb-4 text-white">
               Lets spice up your food brands visibility!
             </h2>
