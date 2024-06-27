@@ -67,7 +67,7 @@ const surroundingImages = [
               key={image.id}
               src={image.src}
               alt="Img"
-              className="absolute w-[4rem] h-[4rem] rounded-full invisible transition-opacity duration-500"
+              className="absolute w-[4rem] h-[4rem] duration-300 rounded-full invisible transition-opacity  ease-in-out"
               style={{
                 top: `calc(50% + ${y}px)`,
                 left: `calc(50% + ${x}px)`,

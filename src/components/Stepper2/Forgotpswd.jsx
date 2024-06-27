@@ -249,7 +249,7 @@ const Forgotpswd = () => {
                 <img
                   className="w-[100%]"
                   src="/images/Vector.png"
-                  alt="Completed-Image"
+                  alt="CompletedCaseWork"
                 />
               </div>
               <p className="text-slate-200 text-center w-full text-[12px]">

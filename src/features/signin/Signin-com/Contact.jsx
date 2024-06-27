@@ -174,7 +174,7 @@ const Contact = () => {
           {/* Privacy Policy and Terms of Service agreement */}
 
           <div className="flex justify-center items-center gap-[.5rem]">
-            <input className="accent-orange-500 xl:ml-[-.8rem] ml-0" type="checkbox" />
+            <input className="accent-orange-500 xl:ml-0 ml-0" type="checkbox" />
             <p className="text-[10px] mt-[1rem]">
               I have read to understand the{" "}
               <Link to="/Policy">
