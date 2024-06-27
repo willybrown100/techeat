@@ -8,13 +8,31 @@
   width: 100%;
 
 } */
+.step {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid orange;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(147, 147, 145);
+}
 
-img{
+.step.active {
+  border-color: rgb(160, 160, 163);
+  background-color: rgb(187, 131, 26);
+}
+
+
+img {
   width: 100%;
 }
 
 
-*,::after,::before{
+*,
+::after,
+::before {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
@@ -22,91 +40,81 @@ img{
 
 .active{
  color: #F16331 ;
- 
- position: relative;
+ text-decoration: underline;
 }
 
-.invisible {
-  opacity: 0;
-}
+body {
 
-.visible {
-  opacity: 1;
-}
-
-.active::before{
-  content: "";
-  position: absolute;
-  border-bottom: 2px solid #F16331 ;
-  width: 100%;
-  height: 100%;
-  margin-top: 0.2rem;
-}
-
-body{
-  
   line-height: 1.5;
 
-color: white;
+  color: white;
   font-size: 0.875rem;
 }
 
-h1,h2,h3,h4{
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: var(--spacing);
   text-transform: capitalize;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
-h1{
+
+h1 {
   font-size: 3rem;
 }
-h2{
+
+h2 {
   font-size: 2rem;
 }
-h3{
+
+h3 {
   font-size: 1.2rem;
 }
-h4{
+
+h4 {
   font-size: 1rem;
 }
-p{
+
+p {
   margin-bottom: 1.2rem;
   max-width: 35rem;
 }
 
-a{
+a {
   text-decoration: none;
   list-style-type: none;
 }
-@media screen and (min-width:900px){
-  h1{
-    font-size:4rem ;
+
+@media screen and (min-width:900px) {
+  h1 {
+    font-size: 4rem;
   }
-  h2{
-    font-size:3rem ;
+
+  h2 {
+    font-size: 3rem;
   }
-  h3{
-    font-size:2rem ;
+
+  h3 {
+    font-size: 2rem;
   }
-  h4{
-    font-size:1rem ;
-  }
-  body{
+
+  h4 {
     font-size: 1rem;
   }
-  h1,h2,h3,h4{
+
+  body {
+    font-size: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
     line-height: 1;
   }
 }
-
-
-
-.aboutUs{
-  height: 50dvh ;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-    url(/images/Herobg.png) center/cover no-repeat scroll;
-}
-
 @media screen and (min-width:768px){
   .contactHeader{
       height: 50dvh ;
@@ -114,8 +122,9 @@ a{
       url(/images/Herobg.png) center/cover no-repeat scroll;
   }
 }
-.signUp{
-  height: 90dvh ;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-      url(/public\images/pizza1.webp) center/cover no-repeat scroll;
+
+.signUp {
+  height: 90dvh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+    url(/public\images/pizza1.webp) center/cover no-repeat scroll;
 }
