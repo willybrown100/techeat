@@ -43,13 +43,6 @@ const StepperPage = () => {
                 <FaRegArrowAltCircleLeft className="text-orange-500 " />
               </div> */}
               <div>
-                {/* <h1 className="font-Roboto Slab w-[400px] font-bold text-[12px] text-left text-white">
-                  Business Information
-                </h1>
-                <h4 className="text-[10px] w-[250px] text-left text-slate-400">
-                  Please provide the required information of your business for
-                  future reference purposes
-                </h4> */}
 
                 <div className="mt-[1rem]">
                   <label className="text-[12px]">Business Name</label>

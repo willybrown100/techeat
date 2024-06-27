@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { IoIosEyeOff, IoIosEye } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
 import Vend2 from "../../../Vendor/Vend2";
 import Forgotpswd from "../../../components/Stepper2/Forgotpswd";
 import { useForm } from "react-hook-form";
+import useFetch from './useFetch'; 
 
 const Contact = () => {
   // State for toggling between customer, vendor, and forgot password views
   const [view, setView] = useState("customer");
-
   // State for toggling password visibility
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -18,9 +17,12 @@ const Contact = () => {
   // Initialize the useForm hook
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
   } = useForm();
+
+  // Use the custom useFetch hook
+  const { fetchData, loading, error } = useFetch('/api/auth/signin', 'POST');
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
@@ -29,23 +31,19 @@ const Contact = () => {
 
   // Function to handle form submission
   const onSubmit = async (data) => {
-    try {
-      // Make API call to sign in
-      const response = await axios.post('/api/auth/signin', {
-        email: data.Email,
-        password: data.Password,
-      });
+    await fetchData({
+      email: data.Email,
+      password: data.Password,
+    });
 
-      if (response.status === 200) {
-        // Navigate to the dashboard on successful sign-in
-        navigate("/dashboard");
-      } else {
-        alert("Sign-in failed. Please try again.");
-      }
-    } catch (error) {
-      console.error("Sign-in error:", error);
-      alert("An error occurred during sign-in. Please try again.");
+    if (!error) {
+      // Navigate to Home Page
+      navigate("/");
+    } else {
+      alert("Sign-in failed. Please try again.");
     }
+
+    reset();
   };
 
   return (
@@ -135,7 +133,7 @@ const Contact = () => {
             <label className="text-[12px]">Password</label>
             <div className="relative">
               <input
-                type={passwordVisible ? "text" : "password"}
+                type={!passwordVisible ? "text" : "password"}
                 className="MainTime"
                 placeholder="Enter your Password"
                 {...register("Password", { required: true })}
@@ -158,6 +156,7 @@ const Contact = () => {
           </div>
 
           {/* Remember Me and Forgot Password */}
+          
           <div className="flex justify-between items-center">
             <span className="flex items-center gap-2">
               <input className="accent-orange-500" type="checkbox" />
@@ -172,6 +171,7 @@ const Contact = () => {
           </div>
 
           {/* Privacy Policy and Terms of Service agreement */}
+          
           <div className="flex justify-center items-center gap-[1rem]">
             <input className="accent-orange-500 ml-[-.8rem]" type="checkbox" />
             <p className="text-[10px] mt-[1rem]">
@@ -195,8 +195,9 @@ const Contact = () => {
             <button
               type="submit"
               className="w-full h-[3.2rem] bg-orange-500 mt-[1rem] cursor-pointer"
+              disabled={loading} // Disable button while loading
             >
-              Sign In
+              {loading ? 'Signing In...' : 'Sign In'} {/* Display loading text */}
             </button>
           </div>
 
@@ -228,6 +229,10 @@ const Contact = () => {
               </span>
             </Link>
           </p>
+
+          {error && (
+            <p className="text-red-500 text-center mt-4">Sign-in failed. Please try again.</p>
+          )}
         </form>
       )}
 

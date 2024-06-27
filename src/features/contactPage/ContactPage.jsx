@@ -7,10 +7,12 @@ function ContactPage() {
  return (
    <>
      <Navbar />
-     <Sidebar/>
+     <Sidebar />
      <header className="contactHeader p-4 text-black md:text-white grid place-items-center">
        <div>
-         <h1 className="font-headings text-center  font-semibold">contact US</h1>
+         <h1 className="font-headings text-center  font-semibold">
+           contact US
+         </h1>
          <p className="text-center font-body">
            Want to know more about our service or suppliers? send us a message
            below and we will get right back to you.
@@ -19,13 +21,13 @@ function ContactPage() {
      </header>
 
      <section className={`${className}`}>
-       <h4 className="text-black text-center font-headings font-semibold max-w-[600px] m-auto">
+       <h4 className="text-black text-center mb-2 hidden md:block font-headings font-semibold max-w-[600px] m-auto">
          Type in your Name, Email address, phone number{" "}
        </h4>
-       <h4 className="text-black font-semibold text-center font font-headings">
+       <h4 className="text-black mb-4 hidden md:block font-semibold text-center font font-headings">
          and we will get back to you.
        </h4>
-       <form className="max-w-[600px] m-auto">
+       <form className="max-w-[650px] md:border-stone-800 border-[1px] px-8 p-4 m-auto">
          <div className="md:flex items-center space-y-4 md:space-y-0 gap-x-1">
            <div className="flex  flex-col md:gap-y-0 w-full">
              <label className="font-headings font-semibold text-black">
@@ -34,7 +36,7 @@ function ContactPage() {
              <input
                type="email"
                placeholder="enter your email"
-               className="block bg-stone-200 rounded-sm w-full p-[2px]"
+               className="block bg-stone-200 placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full p-[2px]"
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">
@@ -44,7 +46,7 @@ function ContactPage() {
              <input
                type="text"
                placeholder="enter your name"
-               className="w-full block rounded-sm p-[2px] bg-stone-200"
+               className="w-full block placeholder:pl-4 placeholder placeholder:text-[0.9rem] capitalize rounded-sm p-[2px] bg-stone-200"
              />
            </div>
          </div>
@@ -56,28 +58,30 @@ function ContactPage() {
            <textarea
              type="text"
              name="name"
-             placeholder="description"
+             placeholder="enter your message"
              class="form-control"
-             className="w-full block  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
+             className="w-full block placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
            />
          </div>
-         <button className="bg-brand font-semibold capitalize w-full p-2 rounded-md">submit</button>
+         <button className="bg-brand font-semibold capitalize w-full p-2 rounded-md">
+           submit
+         </button>
        </form>
      </section>
-     <div className="bg-brand text-center p-4 py-6">
+     <div className=" bg-brand text-center p-4 py-6">
        <h2 className="font-headings font-semibold text-center">
          opening hours
        </h2>
-       <p className="m-auto mb-4">
+       <p className="text-stone-100 m-auto mb-4">
          Delivery within the academy during opening hours.
        </p>
-       <span className="mb-6">MON - WED 10:00am - 4:pm.</span>
-       <h5 className="my-2">closed sundays</h5>
-       <span className="mt-6">THR - FRI 10:am - 4:pm</span>
-       <br/>
-       <span className="mt-6">SAT 11:am - 3pm</span>
+       <span className=" text-stone-100 mb-6">MON - WED 10:00am - 4:pm.</span>
+       <h5 className=" text-stone-100 my-2">closed sundays</h5>
+       <span className="text-stone-100 mt-6">THR - FRI 10:am - 4:pm</span>
+       <br />
+       <span className=" text-stone-100 mt-6">SAT 11:am - 3pm</span>
      </div>
-     <Footer/>
+     <Footer />
    </>
  );
 }

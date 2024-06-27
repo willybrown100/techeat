@@ -1,67 +1,159 @@
-import { motion } from "framer-motion";
+import React, { useCallback, useEffect, useRef } from 'react';
 
 
-function HeroImage({ image, x, y }) {
+
+ 
+
+
+
+
+
+const surroundingImages = [
+  { id: 1, src: "/images/image 20.png" },
+  { id: 2, src: "/images/image 23.png" },
+  { id: 3, src: "/images/image 81.png" },
+  { id: 4, src: "/images/image 82.png" },
+  { id: 5, src: "/images/image 83 (1).png" },
+  { id: 6, src: "/images/image 84.png" },
+  { id: 7, src: " /images/image 84.png" },
+];
+
+ export function CricleImagesLarge() {
+  const observerRef = useCallback(node => {
+    if (node) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.classList.remove('invisible');
+          } else {
+            entry.target.classList.add('invisible');
+            entry.target.classList.remove('visible');
+          }
+        });
+      });
+
+      observer.observe(node);
+
+      return () => observer.unobserve(node);
+    }
+  }, []);
+
+  const calculatePosition = (index, total) => {
+    const angle = (index / total) * 2 * Math.PI;
+    const radius = 230; // Adjust radius
+    const x = radius * Math.cos(angle);
+    const y = radius * Math.sin(angle);
+    return { x, y };
+  };
+
   return (
-    <motion.div
-      className="  rounded-full    absolute  md:py-1.5 md:px-3  lg:py-2 lg:px-4 md:text-sm     lg:p-6 md:p-4 "
-      whileHover={{ scale: 1.5 }}
-      initial={{ x: 0, y: 0 }}
-      whileInView={{ x: x, y: y }}
-      transition={{ duration: 1.5 }}
-    >
-      <img src={image} alt="img" className="w-[3rem] rounded-md z-[2]" />
-    </motion.div>
-  );
-}
-
-function HeroImages() {
-  return (
-    <>
-      <div
-        className=" md:hidden relative rounded-full justify-center flex items-center 
-        "
-      >
-        <motion.div
-          className="flex items-center justify-center rounded-full font-semibold bg-black text-light py-4 px-4 dark:bg-light dark:text-dark"
-          whileHover={{ scale: 1.1}}
-        >
-          <img src="\images\Frame 1171276718 (1).png" className="z-[4] md:w-[25rem]" alt="img" />
-        </motion.div>
-        <HeroImage image="/images/pizza1.webp" x="-39vw" y="-20vw" />
-        <HeroImage image="/images/pizza2.webp" x="-19vw" y="-10vw" />
-        <HeroImage image="/images/pizza3.jpeg" x="10vw" y="6vw" />
-        <HeroImage image="/images/pizza4.jpeg" x="-10vw" y="12vw" />
-        <HeroImage image="/images/pizza5.jpeg " x="12vw" y="-5vw" />
-        <HeroImage image=" /images/pizza3.jpeg" x="-35vw" y="18vw" />
-        <HeroImage image="/images/pizza1.webp" x="28vw" y="10vw" />
+    <div className="hidden md:flex md:items-center md:justify-center md:h-screen">
+      <div className="relative w-[25rem] h-[25rem]">
+        <img
+          src="\images\Frame 1171276718 (1).png"
+          alt="CentralImage"
+          className="absolute  object-cover h-[25rem] rounded-full"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        {surroundingImages.map((image, index) => {
+          const { x, y } = calculatePosition(index, surroundingImages.length);
+          return (
+            <img
+              key={image.id}
+              src={image.src}
+              alt="Img"
+              className="absolute w-[4rem] h-[4rem] rounded-full invisible transition-opacity duration-500"
+              style={{
+                top: `calc(50% + ${y}px)`,
+                left: `calc(50% + ${x}px)`,
+                transform: "translate(-50%, -50%)",
+              }}
+              ref={observerRef}
+            />
+          );
+        })}
       </div>
-    </>
-  );
-}
-export function HeroImages2() {
-  return (
-    <>
-      <div
-        className=" hidden relative rounded-full justify-center sm:flex items-center 
-        "
-      >
-        <motion.div
-          className="flex items-center justify-center rounded-full font-semibold bg-black text-light py-4 px-4 dark:bg-light dark:text-dark"
-          whileHover={{ scale: 1.1}}
-        >
-          <img src="\images\Frame 1171276718 (1).png" className="z-[4] md:w-[25rem]" alt="img" />
-        </motion.div>
-        <HeroImage image="/images/pizza1.webp" x="15vw" y="-15vw" />
-        <HeroImage image="/images/pizza2.webp" x="-19vw" y="-10vw" />
-        <HeroImage image="/images/pizza3.jpeg" x="18vw" y="6vw" />
-        <HeroImage image="/images/pizza4.jpeg" x="-16vw" y="6vw" />
-        <HeroImage image="/images/pizza5.jpeg " x="12vw" y="15vw" />
-        <HeroImage image=" /images/pizza3.jpeg" x="-17vw" y="18vw" />
-        <HeroImage image="/images/pizza1.webp" x="16vw" y="20vw" />
-      </div>
-    </>
+    </div>
   );
 }
 
-export default HeroImages;
+ function CricleImages() {
+  const observerRef = useCallback(node => {
+    if (node) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.classList.remove('invisible');
+          } else {
+            entry.target.classList.add('invisible');
+            entry.target.classList.remove('visible');
+          }
+        });
+      });
+
+      observer.observe(node);
+
+      return () => observer.unobserve(node);
+    }
+  }, []);
+
+  const calculatePosition = (index, total) => {
+    const angle = (index / total) * 2 * Math.PI;
+    const radius = 125; 
+    const x = radius * Math.cos(angle);
+    const y = radius * Math.sin(angle);
+    return { x, y };
+  };
+
+  return (
+    <div className="  md:hidden pb-[1rem] flex items-center justify-center ">
+      <div className="relative w-[14rem] h-[14rem]">
+        <img
+          src="\images\Frame 1171276718 (1).png"
+          alt="CentralImage"
+          className="absolute   rounded-full"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        {surroundingImages.map((image, index) => {
+          const { x, y } = calculatePosition(index, surroundingImages.length);
+          return (
+            <img
+              key={image.id}
+              src={image.src}
+              alt="Img"
+              className="absolute w-[3rem] h-[3rem] rounded-full invisible transition-opacity duration-500"
+              style={{
+                top: `calc(50% + ${y}px)`,
+                left: `calc(50% + ${x}px)`,
+                transform: "translate(-50%, -50%)",
+              }}
+              ref={observerRef}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+export default CricleImages;

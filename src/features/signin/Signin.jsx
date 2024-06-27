@@ -7,8 +7,14 @@ const Signin = () => {
     <div className="relative">
       <div className="w-full">
         <img
-          className="w-[100%] h-[47rem]"
+          className="xl:w-[100%] xl:h-[47rem] hidden"
           src="/images/cover001.png"
+          placeholder="blur"
+          alt="bodyHero"
+        />
+        <img
+          className=" xl:hidden block"
+          src="/images/Mobile.png"
           placeholder="blur"
           alt="bodyHero"
         />

@@ -38,11 +38,10 @@ img {
   padding: 0;
 }
 
-.active {
-  color: #F16331;
-  text-decoration: underline;
+.active{
+ color: #F16331 ;
+ text-decoration: underline;
 }
-
 
 body {
 
@@ -116,12 +115,11 @@ a {
     line-height: 1;
   }
 }
-
-@media screen and (min-width:768px) {
-  .contactHeader {
-    height: 50dvh;
+@media screen and (min-width:768px){
+  .contactHeader{
+      height: 50dvh ;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-      url(/public\images/pizza5.jpeg) center/cover no-repeat scroll;
+      url(/images/Herobg.png) center/cover no-repeat scroll;
   }
 }
 

@@ -1,7 +1,6 @@
 function MenuItem({item}) {
  return (
   <li className="border bg-stone-50 ml-4 rounded-md">
-
 <img src={item.img} alt="img" className="h-[15rem] object-cover"/>
 
 <div className="p-2">

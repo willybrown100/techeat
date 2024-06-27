@@ -23,17 +23,17 @@ function OurService() {
              <span>
                <AiOutlineDeliveredProcedure />
              </span>
-             we provide the bfastest services
+             we provide the fastest services
            </strong>
            <br />
            <strong className=" items-center bg-white p-2 rounded-md gap-x-2 font-semibold inline-flex text-black ">
                <AiOutlineDeliveredProcedure />
-             we provide the bfastest services
+             no additional fees or  for orders
            </strong>
            <br/>
            <strong className=" items-center inline-flex rounded-md gap-x-2 p-2 bg-white font-semibold text text-black">
                <AiOutlineDeliveredProcedure />
-             we provide the bfastest services
+        fast and reliable delivery
            </strong>
          </div>
        </div>

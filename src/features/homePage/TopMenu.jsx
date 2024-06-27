@@ -39,13 +39,13 @@ const menu = [
  
 ];
 function TopMenu() {
-  const className = "max-w-[1300px] w-[95vw] py-4 m-auto";
+  const className = "max-w-[1170px] w-[90vw] py-4 m-auto";
   return (
     <section className={`${className}`}>
       <div className="my-6">
-      <div className="w-[14rem] h-[0.2rem] bg-brand m-auto"></div>
-      <h3 className="text-brand font-headings font-semibold text-center">our top menu</h3>
-      <div className="w-[14rem] h-[0.2rem] bg-brand m-auto"></div>
+      <div className="w-[11rem] h-[0.2rem] bg-brand m-auto"></div>
+      <h3 className="text-brand my-1 font-headings font-semibold text-center">our top menu</h3>
+      <div className="w-[11rem] h-[0.2rem] bg-brand m-auto"></div>
       </div>
       <Carousel
         responsive={responsive}
@@ -73,7 +73,7 @@ function TopMenu() {
   },
 desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 3.5
   },
 tablet: {
   breakpoint: { max: 1024, min: 464 },
