@@ -1,13 +1,31 @@
+import { useForm } from "react-hook-form";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar"
-import Sidebar from "../../components/Sidebar"
+import { useMutation } from "@tanstack/react-query";
+import { submitContact } from "../../services/contactApi";
+import toast from "react-hot-toast";
 
 function ContactPage() {
    const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
+   const {register,reset,handleSubmit}=useForm()
+   const {mutate,isLoading}= useMutation({
+     mutationFn:submitContact,
+     onSuccess :()=>{
+       toast.success("your details have been succesfully submited")
+       reset()
+    },
+    onError:()=>{
+      toast.error("error")
+    }
+  })
+  const onSubmit = function(data){
+   mutate(data)
+   console.log(data)
+  }
  return (
    <>
      <Navbar />
-     <Sidebar />
+   
      <header className="contactHeader p-4 text-black md:text-white grid place-items-center">
        <div>
          <h1 className="font-headings text-center  font-semibold">
@@ -27,7 +45,7 @@ function ContactPage() {
        <h4 className="text-black mb-4 hidden md:block font-semibold text-center font font-headings">
          and we will get back to you.
        </h4>
-       <form className="max-w-[650px] md:border-stone-800 border-[1px] px-8 p-4 m-auto">
+       <form onSubmit={handleSubmit(onSubmit)} className="max-w-[650px] md:border-stone-800 md:border-[1px] px-8 p-4 m-auto">
          <div className="md:flex items-center space-y-4 md:space-y-0 gap-x-1">
            <div className="flex  flex-col md:gap-y-0 w-full">
              <label className="font-headings font-semibold text-black">
@@ -36,7 +54,10 @@ function ContactPage() {
              <input
                type="email"
                placeholder="enter your email"
-               className="block bg-stone-200 placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full p-[2px]"
+               id="email"
+               {...register("email")}
+               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full p-[2px]"
+
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">
@@ -45,8 +66,10 @@ function ContactPage() {
              </label>
              <input
                type="text"
+               id="name"
+               {...register("name")}
                placeholder="enter your name"
-               className="w-full block placeholder:pl-4 placeholder placeholder:text-[0.9rem] capitalize rounded-sm p-[2px] bg-stone-200"
+               className="w-full block placeholder:pl-4 text-black placeholder placeholder:text-[0.9rem] capitalize rounded-sm p-[2px] bg-stone-200"
              />
            </div>
          </div>
@@ -57,10 +80,10 @@ function ContactPage() {
            </label>
            <textarea
              type="text"
-             name="name"
+             id="message"
+             {...register("message")}
              placeholder="enter your message"
-             class="form-control"
-             className="w-full block placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
+             className="w-full block text-black placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
            />
          </div>
          <button className="bg-brand font-semibold capitalize w-full p-2 rounded-md">

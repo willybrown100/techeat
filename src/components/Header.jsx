@@ -42,7 +42,7 @@ function Header() {
          </p>
          <Button>order now</Button>
        </div>
-       {/* <HeroImages2 /> */}
+     
        <CricleImagesLarge />
      </article>
    </header>
