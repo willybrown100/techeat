@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar"
-import Sidebar from "../../components/Sidebar"
 import { useMutation } from "@tanstack/react-query";
 import { submitContact } from "../../services/contactApi";
 import toast from "react-hot-toast";
@@ -26,7 +25,7 @@ function ContactPage() {
  return (
    <>
      <Navbar />
-     <Sidebar />
+   
      <header className="contactHeader p-4 text-black md:text-white grid place-items-center">
        <div>
          <h1 className="font-headings text-center  font-semibold">
