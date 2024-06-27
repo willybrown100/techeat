@@ -24,7 +24,7 @@ function ContactPage() {
   }
  return (
    <>
-     <Navbar />
+    
    
      <header className="contactHeader p-4 text-black md:text-white grid place-items-center">
        <div>
@@ -104,7 +104,7 @@ function ContactPage() {
        <br />
        <span className=" text-stone-100 mt-6">SAT 11:am - 3pm</span>
      </div>
-     <Footer />
+
    </>
  );
 }

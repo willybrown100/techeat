@@ -9,8 +9,7 @@ import VisionandMission from "./VisionandMission"
 function AboutUs() {
  return (
   <>
-  <Navbar/>
-  
+
   
    <header className="aboutUs text-black grid place-items-center">
    <h1 className="capitalize text-white font-headings">we are tech eat</h1>
