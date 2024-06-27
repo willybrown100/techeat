@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Vend2 from "../../../Vendor/Vend2";
 import Forgotpswd from "../../../components/Stepper2/Forgotpswd";
 import { useForm } from "react-hook-form";
-import useFetch from './useFetch'; 
+import useFetch from "./useFetch";
 
 const Contact = () => {
   // State for toggling between customer, vendor, and forgot password views
@@ -17,12 +17,13 @@ const Contact = () => {
   // Initialize the useForm hook
   const {
     register,
-    handleSubmit, reset,
+    handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   // Use the custom useFetch hook
-  const { fetchData, loading, error } = useFetch('/api/auth/signin', 'POST');
+  const { fetchData, loading, error } = useFetch("/api/auth/signin", "POST");
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
@@ -47,7 +48,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="absolute left-[8rem] bg-opacity-10 bg-white backdrop-blur-xl w-[550px] h-[45rem] top-[38.8rem] p-[5rem]">
+    <div className="absolute xl:left-2 left-[1rem] bg-opacity-10  bg-transparent xl:backdrop-blur-xl xl:w-[550px] w-[22rem] xl:h-[47rem] xl:top-[37.2rem] top-[48rem] xl:p-[5rem] p-4 rounded ">
       {/* Radio buttons to select user type (customer/vendor) */}
       <div className="flex justify-between items-center mt-[-1rem]">
         <div className="flex gap-[.6rem] items-center">
@@ -156,7 +157,7 @@ const Contact = () => {
           </div>
 
           {/* Remember Me and Forgot Password */}
-          
+
           <div className="flex justify-between items-center">
             <span className="flex items-center gap-2">
               <input className="accent-orange-500" type="checkbox" />
@@ -171,9 +172,9 @@ const Contact = () => {
           </div>
 
           {/* Privacy Policy and Terms of Service agreement */}
-          
-          <div className="flex justify-center items-center gap-[1rem]">
-            <input className="accent-orange-500 ml-[-.8rem]" type="checkbox" />
+
+          <div className="flex justify-center items-center gap-[.5rem]">
+            <input className="accent-orange-500 xl:ml-[-.8rem] ml-0" type="checkbox" />
             <p className="text-[10px] mt-[1rem]">
               I have read to understand the{" "}
               <Link to="/Policy">
@@ -197,7 +198,8 @@ const Contact = () => {
               className="w-full h-[3.2rem] bg-orange-500 mt-[1rem] cursor-pointer"
               disabled={loading} // Disable button while loading
             >
-              {loading ? 'Signing In...' : 'Sign In'} {/* Display loading text */}
+              {loading ? "Signing In..." : "Sign In"}{" "}
+              {/* Display loading text */}
             </button>
           </div>
 
@@ -231,7 +233,9 @@ const Contact = () => {
           </p>
 
           {error && (
-            <p className="text-red-500 text-center mt-4">Sign-in failed. Please try again.</p>
+            <p className="text-red-500 text-center mt-4">
+              Sign-in failed. Please try again.
+            </p>
           )}
         </form>
       )}

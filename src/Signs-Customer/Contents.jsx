@@ -48,11 +48,11 @@ const Contents = () => {
   };
 
   return (
-    <div className="content-wrapper form-container absolute bg-opacity-10 bg-white backdrop-blur-xl w-[550px] h-[44rem] top-[38.8rem] right-[5rem] p-[5rem]">
+    <div className="absolute bg-opacity-10 bg-white backdrop-blur-xl bg-transparent xl:w-[550px] xl:h-[47rem] xl:top-[37.2rem] top-[48rem] xl:right-0 xl:p-[5rem] p-4 rounded w-[22rem] ml-[-2rem]">
       <div className="flex justify-between items-center mt-[-2rem]">
         <div className="flex gap-[.6rem] items-center">
           <input
-            onClick={handleToggle}
+            onClick={handleToggle} 
             className="accent-orange-500"
             type="radio"
             name="user_type"

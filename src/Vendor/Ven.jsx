@@ -15,7 +15,7 @@ const Ven = () => {
     setOpen(!open);
   };
   return (
-    <div>
+    <div className="ml-[ ]">
        
       <form className="">
       

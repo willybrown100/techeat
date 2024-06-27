@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="absolute top-[20rem] left-[10rem]">
+    <div className="absolute top-[20rem] left-[10rem] xl:block hidden">
       <div className="w-[220px]">
         <img
           className="w-[100%]"

@@ -5,9 +5,9 @@ import Logo2 from "./Signin-com/Logo2";
 const Signin = () => {
   return (
     <div className="relative">
-      <div className="w-full">
+      <div className="w-full ">
         <img
-          className="xl:w-[100%] xl:h-[47rem] hidden"
+          className="xl:w-[100%] xl:h-[47rem] xl:block hidden"
           src="/images/cover001.png"
           placeholder="blur"
           alt="bodyHero"

@@ -55,8 +55,8 @@ const Forgotpswd = () => {
   };
 
   return (
-    <div className="absolute top-[4.5rem] left-[6rem] flex items-center justify-center bg-transparent h-[38rem]">
-      <div className="bg-transparent p-8 rounded-lg shadow-lg w-full h-[34rem]">
+    <div className="absolute top-[4.5rem] xl:left-[6rem] flex items-center justify-center bg-transparent h-[38rem]">
+      <div className="bg-transparent xl:p-8 rounded-lg shadow-lg w-full h-[34rem]">
         {/* CIRCULAR DIV FOR THE STEP MOVEMENT */}
         <div className="flex justify-between items-center mb-[5rem] w-[5rem] ml-[6.5rem]">
           <div className={`step ${step >= 1 ? "active" : ""}`}></div>
