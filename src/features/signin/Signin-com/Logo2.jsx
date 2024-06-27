@@ -3,7 +3,7 @@ import React from "react";
 const Logo2 = () => {
   return (
     <div >
-      <div className="w-[220px] absolute top-[20rem] right-[12rem] ">
+      <div className="w-[220px] absolute xl:top-[20rem] top-[2rem] xl:block hidden right-[18rem] ">
         <img
           className="w-[100%]"
           src="/logo variants.png"

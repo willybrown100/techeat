@@ -7,7 +7,6 @@ import Button from "./../Signs-Customer/Signup-Ui/Button"; // Import Button comp
 import { IoIosEye } from "react-icons/io";
 import StepperPage from "../components/Stepper/StepperPage";
 
-
 const Ven = () => {
   const [open, setOpen] = useState(false);
 
@@ -15,10 +14,8 @@ const Ven = () => {
     setOpen(!open);
   };
   return (
-    <div>
-       
+    <div className="">
       <form className="">
-      
         <h1 className="font-Roboto Slab w-[400px] font-bold text-[18px] text-left text-white">
           Lets spice up your food brands visibility
         </h1>
@@ -48,18 +45,18 @@ const Ven = () => {
           <label className="text-[12px]">Password</label>
           <div className="relative">
             <input
-              type={!open === false ? "Password" : "text"}
+              type={open === false ? "Password" : "text"}
               className="MainTime"
               placeholder="Enter your Password"
             />
             <span className="absolute right-3 cursor-pointer">
               {open ? (
-                <IoIosEyeOff
+                <IoIosEye
                   className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
                   onClick={ToggleOpen}
                 />
               ) : (
-                <IoIosEye
+                <IoIosEyeOff
                   onClick={ToggleOpen}
                   className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
                 />
