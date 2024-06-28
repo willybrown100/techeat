@@ -7,12 +7,12 @@ function PromoSection() {
   return (
     <section className={`bg-black h-full md:bg-transparent`}>
       <article
-        className={`${className} md:max-w-full  md:w-full md:bg-black md:py-0  md:grid md:grid-cols-[1fr,40%] items-center `}
+        className={`${className}  relative  md:w-full md:bg-black md:py-0  md:grid md:grid-cols-[1fr,40%] items-center `}
       >
         <FadeImages />
-        <div className="font-semibold md:ml-[5rem] md:flex md:items-center md:mt-0 py-6 h-full md:bg-black">
+        <div className="font-semibold md:ml-[5rem] relative md:flex md:items-center md:mt-0 py-6 h-full md:bg-black">
           <div className="">
-            <h3 className="font-headings text-center  md:text-left my-4">
+            <h3 className="font-headings text-center   md:text-left my-4">
               get 500 off your
             </h3>
             <h3 className="text-brand text-center  font-headings md:text-left font-semibold">
@@ -24,7 +24,9 @@ function PromoSection() {
             </div>
           </div>
         </div>
+        <div className=" w-full h-full">
         <FadeImages2 />
+        </div>
       </article>
     </section>
   );
@@ -96,7 +98,7 @@ const FadeImages2 = () => {
   });
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "350px" }} className="hidden md:block">
+    <div style={{ position: "relative", width: "100%", height: "350px" }} className="hidden  md:block">
       {transitions((style, item) => (
         <animated.img
           src={item}
