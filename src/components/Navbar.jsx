@@ -22,7 +22,7 @@ dispatch(toggleBar(!open))
          className="text-stone-900 text-2xl sm:hidden"
          onClick={handleClick}
        >
-         <FaBars />
+         <FaBars className=" text-white w-[2rem] h-[2rem] p-[5px] bg-brand rounded-full"/>
        </button>
 
        <ul className=" hidden  md:flex items-center justify-between gap-6">
