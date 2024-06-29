@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* input{
-  border: none;
-  width: 100%;
-
-} */
 .step {
   width: 1.2rem;
   height: 1.2rem;
@@ -24,11 +18,9 @@
   background-color: rgb(187, 131, 26);
 }
 
-
 img {
   width: 100%;
 }
-
 
 *,
 ::after,
@@ -38,15 +30,13 @@ img {
   padding: 0;
 }
 
-.active{
- color: #F16331 ;
- text-decoration: underline;
+.active {
+  color: #f16331;
+  text-decoration: underline;
 }
 
 body {
-
   line-height: 1.5;
-
   color: white;
   font-size: 0.875rem;
 }
@@ -58,7 +48,8 @@ h4 {
   letter-spacing: var(--spacing);
   text-transform: capitalize;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  color: white;
 }
 
 h1 {
@@ -80,6 +71,7 @@ h4 {
 p {
   margin-bottom: 1.2rem;
   max-width: 35rem;
+  color: white;
 }
 
 a {
@@ -87,7 +79,7 @@ a {
   list-style-type: none;
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
   h1 {
     font-size: 4rem;
   }
@@ -115,9 +107,10 @@ a {
     line-height: 1;
   }
 }
-@media screen and (min-width:768px){
-  .contactHeader{
-      height: 50dvh ;
+
+@media screen and (min-width: 768px) {
+  .contactHeader {
+    height: 50dvh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
       url(/images/Herobg.png) center/cover no-repeat scroll;
   }
@@ -126,8 +119,7 @@ a {
 .signUp {
   height: 90dvh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+
     url(/public\images/pizza1.webp) center/cover no-repeat scroll;
 }
-.firstcolumn{
-  flex: 0,0 300px;
-}
+
