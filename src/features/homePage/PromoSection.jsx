@@ -7,11 +7,11 @@ function PromoSection() {
   return (
     <section className={`bg-black h-full md:bg-transparent`}>
       <article
-        className={`${className}  relative  md:w-full md:bg-black md:py-0  md:grid md:grid-cols-[1fr,40%] items-center `}
+        className={`${className} md:max-w-full   md:w-full md:bg-black md:py-0  md:flex md:justify-between md:items-center `}
       >
-        <FadeImages />
-        <div className="font-semibold md:ml-[5rem] relative md:flex md:items-center md:mt-0 py-6 h-full md:bg-black">
-          <div className="">
+ <img src="/images/promoimg.png" alt="img" className="md:hidden"/>
+        <div className="font-semibold md:flex md:items-center md:mt-0 py-6 h-full md:bg-black">
+          <div className="max-w-[500px] mx-auto">
             <h3 className="font-headings text-center   md:text-left my-4">
               get 500 off your
             </h3>
@@ -24,8 +24,8 @@ function PromoSection() {
             </div>
           </div>
         </div>
-        <div className=" w-full h-full">
-        <FadeImages2 />
+        <div className="">
+          <FadeImages2 />
         </div>
       </article>
     </section>

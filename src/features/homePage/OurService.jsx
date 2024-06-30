@@ -1,4 +1,5 @@
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
+import { HiOutlineArrowDownOnSquareStack, HiOutlineTruck } from "react-icons/hi2";
 
 function OurService() {
   const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
@@ -24,22 +25,28 @@ function OurService() {
            </p>
          </div>
          <div className="md:inline-flex  flex-col space-y-4">
-           <strong className="text-sm items-center gap-x-1 p-1 md:text-[1rem] md:px-4 md:gap-x-2 md:p-2 rounded-md inline-flex  bg-white font-semibold text-black ">
+           <strong className=" text-lg items-center gap-x-2 capitalize   p-2 px-4 md:text-[1rem] md:px-4 md:gap-x-2 md:p-2 rounded-md inline-flex  bg-white font-semibold text-black ">
              <span>
-               <AiOutlineDeliveredProcedure />
+               <AiOutlineDeliveredProcedure className="text-brand text-4xl md:text-black" />
              </span>
              we provide the fastest services
            </strong>
            <br />
-           <strong className="text-sm items-center bg-white p-1 md:text-[1rem] md:px-4 md:p-2 rounded-md gap-x-2 font-semibold inline-flex text-black ">
-             <AiOutlineDeliveredProcedure />
+           <strong className="text-lg items-center capitalize p-2 px-[0.6rem] bg-white md:text-[1rem] md:px-4 md:p-2 rounded-md gap-x-2 font-semibold inline-flex text-black ">
+             <HiOutlineArrowDownOnSquareStack className="text-brand text-4xl md:text-black" />
              no additional fees or for orders
            </strong>
            <br />
-           <strong className=" items-center inline-flex rounded-md gap-x-2 p-1 md:p-2 md:px-4  md:text-[1rem]  bg-white font-semibold text text-black">
-             <AiOutlineDeliveredProcedure />
-             fast and reliable delivery
+           <strong className=" items-center text-lg capitalize inline-flex rounded-md gap-x-2 p-2 px-4 md:px-4  md:text-[1rem]  bg-white font-semibold text text-black">
+             <HiOutlineTruck className="text-brand text-4xl md:text-black" />
+             we provide the fastest delivery
            </strong>
+           <div className="hidden">
+             <strong className=" items-center text-lg inline-flex rounded-md p-2 px-2 md:px-4  md:text-[1rem]  bg-white font-semibold text text-black">
+               <HiOutlineTruck className="text-brand text-4xl md:text-black" />
+               fast and reliable delivery
+             </strong>
+           </div>
          </div>
        </div>
      </article>

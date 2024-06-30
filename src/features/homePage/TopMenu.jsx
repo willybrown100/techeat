@@ -10,7 +10,7 @@ const menu = [
     price: 8000,
     notes:
       "Indulge in our mouthwatering Roasted Chicken. Every bite is a delight.",
-    ratings: "/images/Frame 1171277025.png",
+    ratings: "/images/4star.png",
   },
   {
     img: "/images/Frame 1171277030 (1).png",
@@ -26,7 +26,7 @@ const menu = [
     price: 8000,
     notes:
       "Indulge in our mouthwatering Roasted Chicken. Every bite is a delight:",
-    ratings: "/images/Frame 1171277025.png",
+    ratings: "/images/4star.png",
   },
   {
     img: "/images/image 88 (1).png",
@@ -34,7 +34,7 @@ const menu = [
     price: 6000,
     notes:
       "Indulge in our mouthwatering Roasted Chicken. Every bite is a delight:",
-    ratings: "/images/Frame 1171277025.png",
+    ratings: "/images/5star.png",
   },
  
 ];
