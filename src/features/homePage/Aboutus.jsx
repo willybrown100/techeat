@@ -1,7 +1,7 @@
 import Button from "../../ui/Button";
 
 function Aboutus() {
-   const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
+   const className = "max-w-[1170px]   w-[90vw] py-8 m-auto";
  return (
    <section>
      <article className={`${className}`}>
