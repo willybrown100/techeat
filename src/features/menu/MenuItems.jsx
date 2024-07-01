@@ -16,7 +16,7 @@ export default function MenuItems({item}) {
         <p className="mb-0 text-sm font-body text-black">{note}</p>
         <div className="flex items-center justify-between">
           <img src={imgRating} alt="img" className="w-[6rem]" />
-          <h5 className=" font-semibold  text-black">{vendorName}</h5>
+          <h5 className=" font-semibold capitalize text-black">{vendorName}</h5>
         </div>
         <div className="flex justify-between  gap-2">
           <Button className="bg-transparent text-brand border border-brand">

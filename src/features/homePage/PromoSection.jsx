@@ -11,7 +11,7 @@ function PromoSection() {
       >
         <img src="/images/promoimg.png" alt="img" className="md:hidden" />
 
-        <div className="font-semibold flex items-center md:mt-0 py-6 h-[350px] md:bg-black">
+        <div className="font-semibold md:flex md:items-center md:mt-0 py-6 md:h-[350px] md:bg-black">
           <div className="">
             <h3 className="font-headings text-center   md:text-left my-4">
               get #500 off your

@@ -170,7 +170,7 @@ function Menu() {
      </header>
      <article className={`${className}`}>
         <h2 className="text-brand font-headings font-semibold text-center md:hidden">top menu</h2>
-        <ul className="md:grid md:grid-cols-4 gap-2">
+        <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
        {menu.map((item) => (
            <MenuItems item={item} />
         ))}
