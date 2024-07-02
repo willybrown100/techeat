@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* input{
-  border: none;
-  width: 100%;
-
-} */
 .step {
   width: 1.2rem;
   height: 1.2rem;
@@ -24,11 +18,9 @@
   background-color: rgb(187, 131, 26);
 }
 
-
 img {
   width: 100%;
 }
-
 
 *,
 ::after,
@@ -38,15 +30,13 @@ img {
   padding: 0;
 }
 
-.active{
- color: #F16331 ;
- text-decoration: underline;
+.active {
+  color: #f16331;
+  text-decoration: underline;
 }
 
 body {
-
   line-height: 1.5;
-
   color: white;
   font-size: 0.875rem;
 }
@@ -87,7 +77,7 @@ a {
   list-style-type: none;
 }
 
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
   h1 {
     font-size: 4rem;
   }
@@ -115,9 +105,10 @@ a {
     line-height: 1;
   }
 }
-@media screen and (min-width:768px){
-  .contactHeader{
-      height: 50dvh ;
+
+@media screen and (min-width: 768px) {
+  .contactHeader {
+    height: 50dvh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
       url(/images/Herobg.png) center/cover no-repeat scroll;
   }
@@ -126,5 +117,5 @@ a {
 .signUp {
   height: 90dvh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-    url(/public\images/pizza1.webp) center/cover no-repeat scroll;
+    url(/images/pizza1.webp) center/cover no-repeat scroll;
 }
