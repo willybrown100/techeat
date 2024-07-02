@@ -4,7 +4,7 @@ import React from 'react'
 export default function MenuItems({item}) {
     const { img, name, note, imgRating, vendorName ,price} = item;
   return (
-    <li className="text-black border mb-4 border-stone-800 rounded-[0.5rem] md:border-stone-200">
+    <li className="text-black border mb-8 border-stone-800 rounded-[0.5rem] md:border-stone-200">
       <img src={img} alt="img" className="" />
       <div className=" p-2 ">
         <div className="flex items-center justify-between">

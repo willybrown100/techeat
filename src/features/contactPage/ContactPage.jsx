@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar"
+
 import { useMutation } from "@tanstack/react-query";
 import { submitContact } from "../../services/contactApi";
 import toast from "react-hot-toast";
@@ -8,7 +7,7 @@ import toast from "react-hot-toast";
 function ContactPage() {
    const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
    const {register,reset,handleSubmit}=useForm()
-   const {mutate,isLoading}= useMutation({
+   const {mutate}= useMutation({
      mutationFn:submitContact,
      onSuccess :()=>{
        toast.success("your details have been succesfully submited")
@@ -21,6 +20,7 @@ function ContactPage() {
   const onSubmit = function(data){
    mutate(data)
    console.log(data)
+  //  console.log()
   }
  return (
    <>
@@ -45,7 +45,7 @@ function ContactPage() {
        </h4>
        <form
          onSubmit={handleSubmit(onSubmit)}
-         className="max-w-[650px] md:border-stone-800 md:border-[1px] md:px-8 md:p-4 m-auto"
+         className="max-w-[650px] rounded-md md:border-stone-800 md:border-[1px] md:px-8 md:p-4 m-auto"
        >
          <div className="md:flex items-center space-y-4 md:space-y-0 gap-x-1">
            <div className="flex  flex-col md:gap-y-0 w-full">
@@ -80,7 +80,7 @@ function ContactPage() {
            </label>
            <textarea
              type="text"
-             id="message"
+             id="message"JJJJJKKKKKKKKKIKJI
              {...register("message")}
              placeholder="enter your message"
              className="w-full block text-black placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "

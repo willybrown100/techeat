@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
+import { HiChevronRight } from "react-icons/hi2";
 
 const menu = [
   {
@@ -150,7 +152,7 @@ function Menu() {
 
        <div className=" mx-auto  max-w-[500px]">
          <h3 className="font-headings block w-full text-white">
-           Save Big And Enjoy Up To 20%  incredible Discount
+           Save Big And Enjoy Up To 20% incredible Discount
          </h3>
          <p>
            Don’t miss out on these incredible discount off <br /> on selected
@@ -169,12 +171,21 @@ function Menu() {
        </div>
      </header>
      <article className={`${className}`}>
-        <h2 className="text-brand font-headings font-semibold text-center md:hidden">top menu</h2>
-        <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
-       {menu.map((item) => (
+       <h2 className="text-brand font-headings font-semibold text-center md:hidden">
+         top menu
+       </h2>
+       <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
+         {menu.map((item) => (
            <MenuItems item={item} />
-        ))}
-        </ul>
+         ))}
+       </ul>
+       <Link
+         to="/signup"
+         className="text-brand flex items-center justify-end font-semibold"
+       >
+         <span className="text-lg font-semibold">see more</span>
+         <HiChevronRight className="text-3xl font-semibold" />
+       </Link>
      </article>
    </section>
  );
