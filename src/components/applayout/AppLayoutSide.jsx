@@ -22,7 +22,7 @@ export default function AppLayoutSide() {
       </div>
       <ul className='flex pt-6 flex-col justify-center  gap-2 '>
         
-          {link.map((item)=><SideLink item={item}/>)}
+          {link.map((item)=><SideLink item={item} key={item.path}/>)}
       </ul>
     </aside>
   );

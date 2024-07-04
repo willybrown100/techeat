@@ -6,7 +6,7 @@ export default function PopularMenu({item}) {
   return (
     <li className='bg-white rounded-md'>
 
-        <img src={img} alt='img'/>
+        <img src={img} alt='img' className='rounded-tl-md rounded-tr-md'/>
         <div className='p-2'>
         <div className='flex items-center justify-between '>
         <div className='flex text-black gap-y-2 flex-col'>

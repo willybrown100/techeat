@@ -4,39 +4,26 @@ import Mycart from "../../cart/Mycart";
 import Carousel from "react-multi-carousel";
 import PopularMenu from "./PopularMenu";
 import VendorsItem from "./VendorsItem";
+import MenuList from "../../MenuList";
+import VendorList from "../VendorList";
+import MenuVendorsItem from "../applayoutMenu/MenuVendorsItem";
 
 const vendors = [
+  { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
   {
-    img: "/images/Ellipse 2074.png",
-    imgRatig: "/images/5star.png",
-    name: "ibrahim abdul",
-    text: "i'm impressed with TechEats The website is easy to navigate and the delivery was superfas",
+    img: "/images/foodBetty.jpg",
+    vendorName: "food by betty",
   },
   {
-    img: "/images/Ellipse 2075.png",
-    imgRatig: "/images/5star.png",
-    name: "kehinde ogunsola",
-    text: "TechEats has been a lifesaver for me! The variety of options is great and awesome",
+    img: "/images/gracevendor.jpg",
+    vendorName: "grace kitchen",
   },
   {
-    img: "/images/Ellipse 2076.png",
-    imgRatig: "/images/5star.png",
-    name: "smith joseph",
-    text: "TechEats delivery was very swift. I will surely order again",
+    img: "/images/foodBetty.jpg",
+    vendorName: "food by betty",
   },
-  {
-    img: "/images/Ellipse 2076.png",
-    imgRatig: "/images/5star.png",
-    name: "smith joseph",
-    text: "We prioritize ease and efficiency streamlining the food ordering process",
-  },
-
-  {
-    img: "/images/Ellipse 2076.png",
-    imgRatig: "/images/5star.png",
-    name: "smith joseph",
-    text: "We prioritize ease and efficiency streamlining the food ordering process",
-  },
+  { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
+  { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
 ];
 
  const popularMenu = [
@@ -50,24 +37,7 @@ const vendors = [
    { img: "/images/dogh.png", name:"doughnut",vendor:"aries doughnut",price:5000, ratings:"/images/3star.png" },
  ];
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4.5,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1.5,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1.5,
-  },
-};
+
 
 export default function AppLayoutHome() {
   const className = "max-w-[810px] py-4 mx-auto   ";
@@ -111,31 +81,19 @@ export default function AppLayoutHome() {
           <h4 className="text-black my-6 capitalize font-headings font-semibold">
             top vendors
           </h4>
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            infinite={true}
-            autoPlaySpeed={3000}
-            keyBoardControl={true}
-            arrows={false}
-            // showDots={true}
-            // dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            {vendors.map((item) => (
-              <VendorsItem item={item} key={item.name} />
-            ))}
-          </Carousel>
+          <VendorList
+            vendor={vendors}
+            render={(item) => <MenuVendorsItem item={item} key={item.img} />}
+          />
         </div>
         <div>
           <h4 className="text-black font-headings font-semibold my-6">
             popular menu
           </h4>
-          <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
-            {popularMenu.map((item) => (
-              <PopularMenu item={item} key={item.img} />
-            ))}
-          </ul>
+          <MenuList
+            popularMenu={popularMenu}
+            render={(item) => <PopularMenu item={item} key={item.img} />}
+          />
         </div>
         <div className="flex justify-center my-4">
           <button className="bg-brand rounded-md capitalize py-2 text-white font-semibold px-4">
