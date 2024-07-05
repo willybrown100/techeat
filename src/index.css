@@ -32,13 +32,24 @@ img {
 
 .active {
   color: #f16331;
-  text-decoration: underline;
+  position: relative;
 }
+.active::before{
+  content: "";
+  border-bottom:2px solid #f16331;
+  width: 100%;
+  height: 100%;
+position: absolute;
+top: 0.2rem;
+}
+
+
 
 body {
   line-height: 1.5;
   color: white;
   font-size: 0.875rem;
+
 }
 
 h1,
@@ -48,7 +59,9 @@ h4 {
   letter-spacing: var(--spacing);
   text-transform: capitalize;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  color: white;
+  font-family: "Roboto Slab,sans-serif";
 }
 
 h1 {
@@ -70,11 +83,13 @@ h4 {
 p {
   margin-bottom: 1.2rem;
   max-width: 35rem;
+  color: white;
 }
 
 a {
   text-decoration: none;
   list-style-type: none;
+  color:  rgb(241 99 49 / var(--tw-text-opacity));
 }
 
 @media screen and (min-width: 900px) {
@@ -114,8 +129,15 @@ a {
   }
 }
 
+
+
 .signUp {
   height: 90dvh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-    url(/images/pizza1.webp) center/cover no-repeat scroll;
+
+    url(/public\images/pizza1.webp) center/cover no-repeat scroll;
+}
+
+.d{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4))
 }

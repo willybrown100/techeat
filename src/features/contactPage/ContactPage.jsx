@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar"
+
 import { useMutation } from "@tanstack/react-query";
 import { submitContact } from "../../services/contactApi";
 import toast from "react-hot-toast";
@@ -8,7 +7,7 @@ import toast from "react-hot-toast";
 function ContactPage() {
    const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
    const {register,reset,handleSubmit}=useForm()
-   const {mutate,isLoading}= useMutation({
+   const {mutate}= useMutation({
      mutationFn:submitContact,
      onSuccess :()=>{
        toast.success("your details have been succesfully submited")
@@ -21,17 +20,16 @@ function ContactPage() {
   const onSubmit = function(data){
    mutate(data)
    console.log(data)
+  //  console.log()
   }
  return (
    <>
-     <Navbar />
-   
      <header className="contactHeader p-4 text-black md:text-white grid place-items-center">
        <div>
-         <h1 className="font-headings text-center  font-semibold">
+         <h1 className="font-headings text-center text-brand md:text-white text-[1.9rem] md:text-[3rem] font-semibold">
            contact US
          </h1>
-         <p className="text-center font-body">
+         <p className="text-center text-black md:text-white font-body">
            Want to know more about our service or suppliers? send us a message
            below and we will get right back to you.
          </p>
@@ -45,7 +43,10 @@ function ContactPage() {
        <h4 className="text-black mb-4 hidden md:block font-semibold text-center font font-headings">
          and we will get back to you.
        </h4>
-       <form onSubmit={handleSubmit(onSubmit)} className="max-w-[650px] md:border-stone-800 md:border-[1px] px-8 p-4 m-auto">
+       <form
+         onSubmit={handleSubmit(onSubmit)}
+         className="max-w-[650px] rounded-md md:border-stone-800 md:border-[1px] md:px-8 md:p-4 m-auto"
+       >
          <div className="md:flex items-center space-y-4 md:space-y-0 gap-x-1">
            <div className="flex  flex-col md:gap-y-0 w-full">
              <label className="font-headings font-semibold text-black">
@@ -56,8 +57,7 @@ function ContactPage() {
                placeholder="enter your email"
                id="email"
                {...register("email")}
-               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full p-[2px]"
-
+               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full md:p-[4px] p-[8px]"
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">
@@ -69,7 +69,7 @@ function ContactPage() {
                id="name"
                {...register("name")}
                placeholder="enter your name"
-               className="w-full block placeholder:pl-4 text-black placeholder placeholder:text-[0.9rem] capitalize rounded-sm p-[2px] bg-stone-200"
+               className="w-full block placeholder:pl-4 text-black placeholder placeholder:text-[0.9rem] capitalize rounded-md md:p-[4px] p-[8px] bg-stone-200"
              />
            </div>
          </div>
@@ -80,7 +80,7 @@ function ContactPage() {
            </label>
            <textarea
              type="text"
-             id="message"
+             id="message"JJJJJKKKKKKKKKIKJI
              {...register("message")}
              placeholder="enter your message"
              className="w-full block text-black placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
@@ -104,7 +104,6 @@ function ContactPage() {
        <br />
        <span className=" text-stone-100 mt-6">SAT 11:am - 3pm</span>
      </div>
-     <Footer />
    </>
  );
 }

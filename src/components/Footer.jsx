@@ -40,36 +40,36 @@ function Footer() {
            </p>
          </div>
          <div className="hidden md:block">
-         <Logo/>
+           <Logo />
          </div>
 
-<div className="hidden md:block">
-             <h5 className="text-brand font-headings font-semibold">company</h5>
-             <ul className="text-stone-300">
-               <li>
-                 <Link>Home</Link>
-               </li>
-               <li>
-                 <Link>menu</Link>
-               </li>
-               <li>
-                 <Link>Aboutus</Link>
-               </li>
-               <li>
-                 <Link>Contatus</Link>
-               </li>
-             </ul>
-           </div>
-           <div className="hidden md:block">
-             <h5 className="text-brand font-headings font-semibold">
-               opening hours
-             </h5>
-             <ul className="text-stone-300 capitalize flex flex-col gap-y-2">
-               <li>mon-fri:6:00am-6:00pm</li>
-               <li>saturday:6:00am-4:00pm</li>
-               <li>sunday:closed</li>
-             </ul>
-           </div>
+         <div className="hidden md:block">
+           <h5 className="text-brand font-headings font-semibold">company</h5>
+           <ul className="text-stone-300">
+             <li>
+               <Link>Home</Link>
+             </li>
+             <li>
+               <Link>menu</Link>
+             </li>
+             <li>
+               <Link>Aboutus</Link>
+             </li>
+             <li>
+               <Link>Contatus</Link>
+             </li>
+           </ul>
+         </div>
+         <div className="hidden md:block">
+           <h5 className="text-brand font-headings font-semibold">
+             opening hours
+           </h5>
+           <ul className="text-stone-300 capitalize flex flex-col gap-y-2">
+             <li>mon-fri:6:00am-6:00pm</li>
+             <li>saturday:6:00am-4:00pm</li>
+             <li>sunday:closed</li>
+           </ul>
+         </div>
 
          <div className="hidden md:block">
            <h5 className="font-headings ">
@@ -90,53 +90,50 @@ function Footer() {
              <Button type="email">subscribe</Button>
            </div>
          </div>
+       </div>
+
+       <div className="md:hidden flex justify-between gap-2">
+         <div>
+           <h5 className="text-brand font-headings font-semibold">company</h5>
+           <ul className="text-stone-300">
+             <li>
+               <Link className="text-white">Home</Link>
+             </li>
+             <li>
+               <Link className="text-white">menu</Link>
+             </li>
+             <li>
+               <Link className="text-white">Aboutus</Link>
+             </li>
+             <li>
+               <Link className="text-white">Contatus</Link>
+             </li>
+           </ul>
          </div>
+         <div>
+           <h5 className="text-brand font-headings font-semibold">
+             opening hours
+           </h5>
+           <ul className="text-stone-300 capitalize flex flex-col gap-y-2">
+             <li>mon-fri:6:00am-6:00pm</li>
+             <li>saturday:6:00am-4:00pm</li>
+             <li>sunday:closed</li>
+           </ul>
+         </div>
+       </div>
 
-
-
-         <div className="md:hidden flex justify-between gap-2">
-           <div>
-             <h5 className="text-brand font-headings font-semibold">company</h5>
-             <ul className="text-stone-300">
-               <li>
-                 <Link>Home</Link>
-               </li>
-               <li>
-                 <Link>menu</Link>
-               </li>
-               <li>
-                 <Link>Aboutus</Link>
-               </li>
-               <li>
-                 <Link>Contatus</Link>
-               </li>
-             </ul>
+       <div className="mt-6 md:hidden">
+         <h5 className="mb-3">subscribe to our newsletter</h5>
+         <form>
+           <div className="flex border border-white justify-between rounded-md p-1">
+             <input type="text" className="w-full bg-transparent " />
+             <button className="text-lg rounded-tr-md rounded-br-md bg-brand p-1 px-2 font-semibold">
+               subscribe
+             </button>
            </div>
-           <div>
-             <h5 className="text-brand font-headings font-semibold">
-               opening hours
-             </h5>
-             <ul className="text-stone-300 capitalize flex flex-col gap-y-2">
-               <li>mon-fri:6:00am-6:00pm</li>
-               <li>saturday:6:00am-4:00pm</li>
-               <li>sunday:closed</li>
-             </ul>
-           </div>
-         </div>
-
-         <div className="mt-6 md:hidden">
-           <h5>subscribe to our newsletter</h5>
-           <form>
-             <div className="flex border border-white justify-between rounded-md p-1">
-               <input type="text" className="w-full bg-transparent " />
-               <button className="text-lg rounded-tr-md rounded-br-md bg-brand p-1 px-2 font-semibold">
-                 subscribe
-               </button>
-             </div>
-           </form>
-           <div className="border-b border-stone-200 md:hidden my-12 mt-4"></div>
-         </div>
-       
+         </form>
+         <div className="border-b border-stone-200 md:hidden my-12 mt-4"></div>
+       </div>
 
        <div className="md:hidden flex gap-y-6 flex-col justify-center text-stone-200 items-center">
          <div>
