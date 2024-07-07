@@ -10,7 +10,7 @@ import TopMenu from "./TopMenu";
 function HomePage() {
  return (
    <section >
-     <Navbar />
+     {/* <Navbar /> */}
      
      <Header/>
    <TopMenu/>
@@ -18,7 +18,7 @@ function HomePage() {
    <OurVendors/>
    <PromoSection/>
    <Aboutus/>
-   <Footer/>
+   {/* <Footer/> */}
    </section>
  );
 }

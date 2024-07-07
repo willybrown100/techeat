@@ -15,7 +15,7 @@ const useFetch = (url, method) => {
           body: isFormData ? body : JSON.stringify(body),
         };
 
-        const response = await fetch(url, options); // Updated to use the correct URL and options
+        const response = await fetch(url, options);
 
         if (!response.ok) {
           const errorText = await response.text();

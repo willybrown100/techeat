@@ -22,7 +22,7 @@ const Contents = () => {
 
   const { loading, error, response, fetchData } = useFetch(
     "https://techeat-server-1.onrender.com/api/auth/register",
-    "POST"
+    { method: "POST" }
   );
 
   const handleToggle = () => setToggle(!toggle);
