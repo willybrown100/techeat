@@ -6,11 +6,11 @@ export default function MeetOurTeam() {
     <section className="bg-black md:bg-transparent">
       <article className={`${className}`}>
         <div className="md:my-4 md:mb-[4rem]">
-          <div className="w-[14rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
-          <h3 className="text-brand text-[1.7rem] font-headings font-semibold text-center">
+          <div className="w-[13rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
+          <h3 className="text-brand text-[1.7rem] mb-1 font-headings font-semibold text-center">
             meet our team
           </h3>
-          <div className="w-[14rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
+          <div className="w-[13rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4  justify-center gap-2">

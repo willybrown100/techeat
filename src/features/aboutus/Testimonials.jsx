@@ -67,11 +67,11 @@ export default function Testimonials() {
     <section>
       <article className={`${className}`}>
         <div className="my-3 md:my-6 mb-2 md:mb-[4rem]">
-          <div className="w-[14rem] h-[0.2rem] bg-brand hidden md:block  m-auto"></div>
-          <h3 className="text-brand text-[1.7rem] font-headings font-semibold text-center">
+          <div className="w-[10.5rem] h-[0.2rem] bg-brand hidden md:block  m-auto"></div>
+          <h3 className="text-brand text-[1.7rem] my-1 font-headings font-semibold text-center">
             testimonials
           </h3>
-          <div className="w-[14rem] h-[0.2rem] text-headings hidden md:block bg-brand m-auto"></div>
+          <div className="w-[10.5rem] h-[0.2rem] text-headings hidden md:block bg-brand m-auto"></div>
         </div>
 
         <Carousel

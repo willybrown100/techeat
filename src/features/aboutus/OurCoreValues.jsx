@@ -72,7 +72,7 @@ export default function OurCoreValues() {
       <article className={`${className}`}>
         <div className="md:my-6 md:mb-[4rem] mb-[2rem]">
           <div className="w-[14rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
-          <h3 className="text-brand text-[1.7rem] font-headings font-semibold text-center">
+          <h3 className="text-brand text-[1.7rem] mb-1 font-headings font-semibold text-center">
             our core Values
           </h3>
           <div className="w-[14rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>

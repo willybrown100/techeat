@@ -5,11 +5,11 @@ export default function OurStory() {
   return (
     <section className={`${className}`}>
       <div className="my-6">
-        <div className="w-[14rem] h-[0.2rem] bg-brand hidden md:block m-auto"></div>
-        <h3 className="text-brand text-[1.7rem] font-headings font-semibold text-center">
+        <div className="w-[10rem] h-[0.2rem] bg-brand hidden md:block m-auto"></div>
+        <h3 className="text-brand text-[1.7rem] mb-[0.4rem] font-headings font-semibold text-center">
           our story
         </h3>
-        <div className="w-[14rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
+        <div className="w-[10rem] h-[0.18rem] hidden md:block bg-brand m-auto"></div>
       </div>
 
       <div className="md:relative md:flex  md:gap-x-4">

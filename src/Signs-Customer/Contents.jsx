@@ -45,6 +45,7 @@ const Contents = () => {
     }
     
     reset();
+    console.log(data)
   };
 
   return (
