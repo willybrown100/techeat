@@ -4,17 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Vend2 from "../../../Vendor/Vend2";
 import Forgotpswd from "../../../components/Stepper2/Forgotpswd";
 import { useForm } from "react-hook-form";
-import useFetch from "./useFetch";
+import useFetch from "./../Signin-com/useFetch";
 
 const Contact = () => {
-  // State for toggling between customer, vendor, and forgot password views
   const [view, setView] = useState("customer");
-  // State for toggling password visibility
   const [passwordVisible, setPasswordVisible] = useState(false);
-
   const navigate = useNavigate();
 
-  // Initialize the useForm hook
   const {
     register,
     handleSubmit,
@@ -22,34 +18,34 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  // Use the custom useFetch hook
-  const { fetchData, loading, error } = useFetch("/api/auth/signin", "POST");
+  const { fetchData, error, loading } = useFetch(
+    "https://techeat-server-1.onrender.com/api/auth/signin",
+    "POST"
+  );
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // Function to handle form submission
   const onSubmit = async (data) => {
-    await fetchData({
-      email: data.Email,
-      password: data.Password,
-    });
+    try {
+      const response = await fetchData({
+        email: data.Email,
+        password: data.Password,
+      });
 
-    if (!error) {
-      // Navigate to Home Page
-      navigate("/");
-    } else {
-      alert("Sign-in failed. Please try again.");
+      if (response) {
+        navigate("/signin");
+      }
+    } catch (err) {
+      console.log(err);
     }
 
     reset();
   };
 
   return (
-    <div className="absolute xl:left-2 left-[1rem] bg-opacity-10  bg-transparent xl:backdrop-blur-xl xl:w-[550px] w-[22rem] xl:h-[47rem] xl:top-[37.2rem] top-[48rem] xl:p-[5rem] p-4 rounded ">
-      {/* Radio buttons to select user type (customer/vendor) */}
+    <div className="absolute xl:left-2 left-[1rem] bg-opacity-10 bg-transparent xl:backdrop-blur-xl xl:w-[550px] w-[22rem] xl:h-[47rem] xl:top-[37.2rem] top-[48rem] xl:p-[5rem] p-4 rounded">
       <div className="flex justify-between items-center mt-[-1rem]">
         <div className="flex gap-[.6rem] items-center">
           <input
@@ -83,7 +79,6 @@ const Contact = () => {
 
       {view === "customer" && (
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Customer sign-in form */}
           <h1 className="font-Roboto Slab w-[400px] font-bold text-[22px] text-left text-white">
             Welcome Back! <span className="text-[12px]">to your account</span>
           </h1>
@@ -92,7 +87,6 @@ const Contact = () => {
             right to your door.
           </h4>
 
-          {/* Name input field */}
           <div className="mt-[1rem]">
             <label className="text-[12px]">Name</label>
             <br />
@@ -111,7 +105,6 @@ const Contact = () => {
             )}
           </div>
 
-          {/* Email input field */}
           <div className="Input-Data mt-[1rem]">
             <label className="text-[12px]">Email</label>
             <input
@@ -129,12 +122,11 @@ const Contact = () => {
             )}
           </div>
 
-          {/* Password input field */}
           <div className="Input-Data mt-[1rem]">
             <label className="text-[12px]">Password</label>
             <div className="relative">
               <input
-                type={!passwordVisible ? "text" : "password"}
+                type={passwordVisible ? "text" : "password"}
                 className="MainTime"
                 placeholder="Enter your Password"
                 {...register("Password", { required: true })}
@@ -156,8 +148,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Remember Me and Forgot Password */}
-
           <div className="flex justify-between items-center">
             <span className="flex items-center gap-2">
               <input className="accent-orange-500" type="checkbox" />
@@ -170,11 +160,12 @@ const Contact = () => {
               Forgot password?
             </h4>
           </div>
-
-          {/* Privacy Policy and Terms of Service agreement */}
-
+          {/* 
           <div className="flex justify-center items-center gap-[.5rem]">
-            <input className="accent-orange-500 xl:ml-[-1.2rem] ml-0" type="checkbox" />
+            <input
+              className="accent-orange-500 xl:ml-[-1.2rem] ml-0"
+              type="checkbox"
+            />
             <p className="text-[10px] mt-[1rem]">
               I have read to understand the{" "}
               <Link to="/Policy">
@@ -189,28 +180,24 @@ const Contact = () => {
                 </span>
               </Link>
             </p>
-          </div>
+          </div> */}
 
-          {/* Sign In button */}
           <div>
             <button
               type="submit"
               className="w-full h-[3.2rem] bg-orange-500 mt-[1rem] cursor-pointer"
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
-              {loading ? "Signing In..." : "Sign In"}{" "}
-              {/* Display loading text */}
+              {loading ? "Signing In..." : "Sign In"}
             </button>
           </div>
 
-          {/* Divider for alternative sign-in options */}
           <div className="flex justify-center items-center gap-1 mt-[2rem]">
             <hr className="w-[12rem] bg-slate-800" />
             <h4 className="pt-[.4rem] text-[12px]">or</h4>
             <hr className="w-[12rem] bg-slate-800" />
           </div>
 
-          {/* Sign In with Google button */}
           <button className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]">
             <span className="flex justify-center items-center gap-2">
               <img
@@ -222,7 +209,6 @@ const Contact = () => {
             </span>
           </button>
 
-          {/* Link to Sign Up page */}
           <p className="text-center text-[12px] mt-[.9rem]">
             Don't have an account?{" "}
             <Link to="/signUp">
@@ -232,11 +218,11 @@ const Contact = () => {
             </Link>
           </p>
 
-          {error && (
+          {/* {error && (
             <p className="text-red-500 text-center mt-4">
               Sign-in failed. Please try again.
             </p>
-          )}
+          )} */}
         </form>
       )}
 

@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import Sidebar from "../../components/Sidebar";
-import OurService from "../homePage/OurService";
+// import Sidebar from "../../components/Sidebar";
+// import OurService from "../homePage/OurService";
 import MeetOurTeam from "./MeetOurTeam";
 import OurCoreValues from "./OurCoreValues";
 import OurStory from "./OurStory";

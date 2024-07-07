@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { IoIosEyeOff, IoIosEye } from "react-icons/io";
-import { Link } from "react-router-dom";
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useFetch from "./../../features/signup/useFetch";
 
 const Forgotpswd = () => {
   const navigate = useNavigate();
@@ -12,6 +11,19 @@ const Forgotpswd = () => {
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const {
+    data: forgotData,
+    error: forgotError,
+    loading: forgotLoading,
+    fetchData: forgotFetchData,
+  } = useFetch("/api/auth/forgot-password", "POST");
+  const {
+    data: resetData,
+    error: resetError,
+    loading: resetLoading,
+    fetchData: resetFetchData,
+  } = useFetch("/api/auth/reset-password", "POST");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -37,35 +49,48 @@ const Forgotpswd = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSignIn = async () => {
+  const handleSendEmail = async () => {
     try {
-      const response = await axios.post('/api/auth/signin', {
-        email,
-        password: newPassword,
-      });
-      if (response.status === 200) {
-        navigate("/signin");
+      const response = await forgotFetchData({ email });
+      if (response) {
+        nextStep();
       } else {
-        alert("Sign-in failed. Please try again.");
+        alert("Failed to send reset instructions. Please try again.");
       }
     } catch (error) {
-      console.error("Sign-in error:", error);
-      alert("An error occurred during sign-in. Please try again.");
+      alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+    try {
+      const response = await resetFetchData({
+        email,
+        newPassword,
+      });
+      if (response) {
+        nextStep();
+      } else {
+        alert("Failed to reset password. Please try again.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
     }
   };
 
   return (
     <div className="absolute top-[4.5rem] xl:left-[6rem] flex items-center justify-center bg-transparent h-[38rem]">
       <div className="bg-transparent xl:p-8 rounded-lg shadow-lg w-full h-[34rem]">
-        {/* CIRCULAR DIV FOR THE STEP MOVEMENT */}
         <div className="flex justify-between items-center mb-[5rem] w-[5rem] ml-[6.5rem]">
           <div className={`step ${step >= 1 ? "active" : ""}`}></div>
           <div className={`step ${step >= 2 ? "active" : ""}`}></div>
           <div className={`step ${step >= 3 ? "active" : ""}`}></div>
           <div className={`step ${step >= 4 ? "active" : ""}`}></div>
         </div>
-
-        {/* PASSWORD ENTRY PHASE */}
 
         {step === 1 && (
           <div className="mt-[-2rem]">
@@ -81,7 +106,7 @@ const Forgotpswd = () => {
                 <label className="text-[12px]">E-mail</label>
                 <br />
                 <input
-                  type="text"
+                  type="email" // Changed to email type for validation
                   className="w-[100%] bg-transparent outline-0 border-0 border-b"
                   placeholder="Enter your E-mail"
                   value={email}
@@ -91,10 +116,11 @@ const Forgotpswd = () => {
             </div>
 
             <button
-              onClick={nextStep}
+              onClick={handleSendEmail}
               className="w-full h-[3.2rem] bg-orange-500 font-bold mb-[1rem] mt-[4rem]"
+              disabled={forgotLoading}
             >
-              Send E-Mail
+              {forgotLoading ? "Sending..." : "Send E-Mail"}
             </button>
             <div className="w-[8rem] shadow-2xl ml-[5rem] p-1 rounded-full bg-transparent cursor-pointer">
               <h4 className="text-center text-[12px] pt-2">
@@ -104,10 +130,13 @@ const Forgotpswd = () => {
                 </Link>
               </h4>
             </div>
+            {forgotError && (
+              <p className="text-red-500 text-center mt-4">
+                Failed to send reset instructions. Please try again.
+              </p>
+            )}
           </div>
         )}
-
-        {/* CHECK YOUR EMAIL STAGE: */}
 
         {step === 2 && (
           <div className="w-[18rem]">
@@ -134,7 +163,7 @@ const Forgotpswd = () => {
                 <h2 className="text-[12px] text-center">
                   We’ve sent an e-mail to the address
                 </h2>
-                <h4 className="text-center">*********cyy@gmail.com</h4>
+                <h4 className="text-center">{email}</h4>
 
                 <div className="">
                   <h1 className="text-[10px] text-center w-[200px] ml-[2.5rem] mb-[4rem]">
@@ -163,8 +192,6 @@ const Forgotpswd = () => {
           </div>
         )}
 
-        {/* RESET PASSWORD PHASE */}
-
         {step === 3 && (
           <div className="h-[22rem] w-full mt-[-3rem]">
             <div className="w-full">
@@ -183,7 +210,7 @@ const Forgotpswd = () => {
                   <label className="text-[12px]">New Password</label>
                   <div className="relative">
                     <input
-                      type={passwordVisible ? "password" : "text"}
+                      type={passwordVisible ? "text" : "password"}
                       className="MainTime"
                       placeholder="Enter your Password"
                       value={newPassword}
@@ -205,7 +232,7 @@ const Forgotpswd = () => {
                   <label className="text-[12px]">Confirm Password</label>
                   <div className="relative">
                     <input
-                      type={passwordVisible ? "password" : "text"}
+                      type={passwordVisible ? "text" : "password"}
                       className="MainTime"
                       placeholder="Enter your Password"
                       value={confirmPassword}
@@ -226,17 +253,21 @@ const Forgotpswd = () => {
               </div>
               <div>
                 <button
-                  onClick={nextStep}
+                  onClick={handleResetPassword}
                   className="bg-orange-500 w-full h-[3rem] shadow-2xl mt-[3rem] font-bold"
+                  disabled={resetLoading}
                 >
-                  Reset Password!
+                  {resetLoading ? "Resetting..." : "Reset Password!"}
                 </button>
               </div>
+              {resetError && (
+                <p className="text-red-500 text-center mt-4">
+                  Failed to reset password. Please try again.
+                </p>
+              )}
             </div>
           </div>
         )}
-
-        {/* PASSWORD SIGN-IN PHASE */}
 
         {step === 4 && (
           <div className=" w-[18rem]">
@@ -255,7 +286,8 @@ const Forgotpswd = () => {
               <p className="text-slate-200 text-center w-full text-[12px]">
                 Your Password has been successfully changed!
               </p>
-              <button onClick={handleSignIn}
+              <button
+                onClick={() => navigate("/signin")}
                 className="bg-orange-500 w-full h-[3rem] shadow-2xl mt-[3rem] font-bold cursor-pointer"
               >
                 Sign In!

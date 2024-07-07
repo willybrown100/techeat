@@ -1,29 +1,41 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useCallback } from "react";
 
-const useFetch = (url, method = 'GET', initialData = null) => {
-  const [data, setData] = useState(initialData);
+const useFetch = (url, method) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchData = async (bodyData = null) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios({
-        method,
-        url,
-        data: bodyData,
-      });
-      setData(response.data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const fetchData = useCallback(
+    async (body, isFormData = false) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const options = {
+          method,
+          headers: isFormData ? {} : { "Content-Type": "application/json" },
+          body: isFormData ? body : JSON.stringify(body),
+        };
 
-  return { data, loading, error, fetchData };
+        const response = await fetch(url, options); // Updated to use the correct URL and options
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Network response was not ok: ${errorText}`);
+        }
+
+        const data = await response.json();
+        setLoading(false);
+        return data;
+      } catch (err) {
+        setLoading(false);
+        setError(err.message);
+        console.error("Fetch error:", err);
+        throw err;
+      }
+    },
+    [url, method]
+  );
+
+  return { fetchData, error, loading };
 };
 
-export default useFetch; // Ensure the hook is exported as default
+export default useFetch;
