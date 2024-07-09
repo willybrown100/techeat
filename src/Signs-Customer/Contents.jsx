@@ -33,6 +33,7 @@ const Contents = () => {
         {
           method: "POST",
           body: JSON.stringify({
+            name: data.name,
             email: data.Email,
             password: data.Password,
             user_type: data.user_type,
