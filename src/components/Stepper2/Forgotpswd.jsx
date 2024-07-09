@@ -17,13 +17,13 @@ const Forgotpswd = () => {
     error: forgotError,
     loading: forgotLoading,
     fetchData: forgotFetchData,
-  } = useFetch("/api/auth/forgot-password", "POST");
+  } = useFetch("https://techeat-server-1.onrender.com/api/auth/forgot-password", "POST");
   const {
     data: resetData,
     error: resetError,
     loading: resetLoading,
     fetchData: resetFetchData,
-  } = useFetch("/api/auth/reset-password", "POST");
+  } = useFetch("https://techeat-server-1.onrender.com/api/auth/forgot-password", "POST");
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -80,6 +80,8 @@ const Forgotpswd = () => {
     } catch (error) {
       alert("An error occurred. Please try again.");
     }
+
+    // reset();
   };
 
   return (
@@ -106,7 +108,7 @@ const Forgotpswd = () => {
                 <label className="text-[12px]">E-mail</label>
                 <br />
                 <input
-                  type="email" // Changed to email type for validation
+                  type="email" 
                   className="w-[100%] bg-transparent outline-0 border-0 border-b"
                   placeholder="Enter your E-mail"
                   value={email}

@@ -20,10 +20,7 @@ const Contents = () => {
     formState: { errors },
   } = useForm();
 
-  const { loading, error, response, fetchData } = useFetch(
-    "https://techeat-server-1.onrender.com/api/auth/register",
-    { method: "POST" }
-  );
+  const { loading, error, fetchData } = useFetch();
 
   const handleToggle = () => setToggle(!toggle);
   const ToggleOpen = () => setOpen(!open);
@@ -31,10 +28,20 @@ const Contents = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetchData({
-        email: data.Email,
-        password: data.Password,
-      });
+      const response = await fetchData(
+        "https://techeat-server-1.onrender.com/api/auth/register",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: data.Email,
+            password: data.Password,
+            user_type: data.user_type,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log("Response from fetchData:", response);
       if (response) {
         if (data.user_type === "Vendor") {
@@ -42,8 +49,6 @@ const Contents = () => {
         } else {
           navigate("/signin");
         }
-      } else {
-        throw new Error("Sign-up failed. Please try again.");
       }
     } catch (error) {
       console.error("Sign-up error:", error);
@@ -134,7 +139,8 @@ const SignUpForm = ({
         required: "Name is required",
         minLength: "Name must be at least 3 characters long",
         maxLength: "Name cannot exceed 20 characters",
-        pattern: "Name can only contain alphanumeric characters and underscores",
+        pattern:
+          "Name can only contain alphanumeric characters and underscores",
       }}
     />
 
@@ -201,21 +207,35 @@ const SignUpForm = ({
 
     <button className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]">
       <span className="flex justify-center items-center gap-2">
-        <img className="w-[24px]" src="/images/google-icon.png" alt="googleIcon" />
+        <img
+          className="w-[24px]"
+          src="/images/google-icon.png"
+          alt="googleIcon"
+        />
         <p className="mt-[1.1rem]">Sign in with Google</p>
       </span>
     </button>
 
     <p className="text-center text-[12px] mt-[.9rem]">
       Already have an account?{" "}
-      <Link to="/signin" className="underline uppercase font-bold cursor-pointer">
+      <Link
+        to="/signin"
+        className="underline uppercase font-bold cursor-pointer"
+      >
         Sign in
       </Link>
     </p>
   </form>
 );
 
-const InputField = ({ label, type, placeholder, register, error, errorMessage }) => (
+const InputField = ({
+  label,
+  type,
+  placeholder,
+  register,
+  error,
+  errorMessage,
+}) => (
   <div className="mt-[1rem]">
     <label className="text-[12px]">{label}</label>
     <br />
@@ -235,7 +255,15 @@ const InputField = ({ label, type, placeholder, register, error, errorMessage })
   </div>
 );
 
-const PasswordField = ({ label, placeholder, register, error, errorMessage, open, ToggleOpen }) => (
+const PasswordField = ({
+  label,
+  placeholder,
+  register,
+  error,
+  errorMessage,
+  open,
+  ToggleOpen,
+}) => (
   <div className="Input-Data mt-[1rem]">
     <label className="text-[12px]">{label}</label>
     <div className="relative">
@@ -248,16 +276,18 @@ const PasswordField = ({ label, placeholder, register, error, errorMessage, open
       />
       <span className="absolute right-3 cursor-pointer">
         {open ? (
-          <IoIosEyeOff className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]" onClick={ToggleOpen} />
+          <IoIosEyeOff
+            className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+            onClick={ToggleOpen}
+          />
         ) : (
-          <IoIosEye className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]" onClick={ToggleOpen} />
+          <IoIosEye
+            className="cursor-pointer w-[2rem] h-[2rem] pb-[.8rem]"
+            onClick={ToggleOpen}
+          />
         )}
       </span>
-      {error && (
-        <span className="text-white">
-          {errorMessage}
-        </span>
-      )}
+      {error && <span className="text-white">{errorMessage}</span>}
     </div>
   </div>
 );
