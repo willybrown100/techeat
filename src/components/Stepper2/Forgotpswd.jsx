@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { IoIosEyeOff, IoIosEye } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import useFetch from "./../../features/signup/useFetch";
+import useFetch from "./useFetchside";
+import { useForm } from "react-hook-form";
 
 const Forgotpswd = () => {
   const navigate = useNavigate();
@@ -17,13 +18,28 @@ const Forgotpswd = () => {
     error: forgotError,
     loading: forgotLoading,
     fetchData: forgotFetchData,
-  } = useFetch("https://techeat-server-1.onrender.com/api/auth/forgot-password", "POST");
+  } = useFetch(
+    "https://techeat-server-1.onrender.com/api/auth/forgot-password",
+    "POST"
+  );
   const {
     data: resetData,
     error: resetError,
     loading: resetLoading,
     fetchData: resetFetchData,
-  } = useFetch("https://techeat-server-1.onrender.com/api/auth/forgot-password", "POST");
+  } = useFetch(
+    "https://techeat-server-1.onrender.com/api/auth/forgot-password",
+    "POST"
+  );
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -49,9 +65,15 @@ const Forgotpswd = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSendEmail = async () => {
+  const onSubmitEmail = async (data) => {
     try {
-      const response = await forgotFetchData({ email });
+      const response = await forgotFetchData({
+        method: "POST",
+        body: JSON.stringify({ email: data.email }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response) {
         nextStep();
       } else {
@@ -62,15 +84,22 @@ const Forgotpswd = () => {
     }
   };
 
-  const handleResetPassword = async () => {
+  const onSubmitPassword = async (data) => {
     if (newPassword !== confirmPassword) {
       alert("Passwords do not match. Please try again.");
       return;
     }
     try {
       const response = await resetFetchData({
-        email,
-        newPassword,
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          newPassword,
+          confirmPassword,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (response) {
         nextStep();
@@ -81,7 +110,7 @@ const Forgotpswd = () => {
       alert("An error occurred. Please try again.");
     }
 
-    // reset();
+    reset();
   };
 
   return (
@@ -108,17 +137,19 @@ const Forgotpswd = () => {
                 <label className="text-[12px]">E-mail</label>
                 <br />
                 <input
-                  type="email" 
+                  type="email"
                   className="w-[100%] bg-transparent outline-0 border-0 border-b"
                   placeholder="Enter your E-mail"
                   value={email}
                   onChange={handleEmailChange}
+                  {...register("email", { required: "Email is required" })}
                 />
+                {errors.email && <p>{errors.email.message}</p>}
               </div>
             </div>
 
             <button
-              onClick={handleSendEmail}
+              onClick={handleSubmit(onSubmitEmail)}
               className="w-full h-[3.2rem] bg-orange-500 font-bold mb-[1rem] mt-[4rem]"
               disabled={forgotLoading}
             >
@@ -163,7 +194,7 @@ const Forgotpswd = () => {
 
               <div className="Input-Data mt-[1rem]">
                 <h2 className="text-[12px] text-center">
-                  We’ve sent an e-mail to the address
+                  We've sent an e-mail to the address
                 </h2>
                 <h4 className="text-center">{email}</h4>
 
@@ -182,12 +213,12 @@ const Forgotpswd = () => {
               </button>
               <div>
                 <h4 className="text-center mt-[2rem] text-[12px]">
-                  Return to{" "}
-                  <Link to="/signin">
+                 
+                  <p  onClick={() => navigate("/signin")}>
                     <span className="font-bold underline cursor-pointer">
-                      Sign-in
+                    Return to Sign-in
                     </span>
-                  </Link>
+                  </p>
                 </h4>
               </div>
             </div>
@@ -217,7 +248,16 @@ const Forgotpswd = () => {
                       placeholder="Enter your Password"
                       value={newPassword}
                       onChange={handleNewPasswordChange}
+                      {...register("newPassword", {
+                        required: "New password is required",
+                        minLength: {
+                          value: 8,
+                          message:
+                            "Password must be at least 8 characters long",
+                        },
+                      })}
                     />
+                    {errors.newPassword && <p>{errors.newPassword.message}</p>}
                     <span
                       className="absolute right-3 cursor-pointer"
                       onClick={togglePasswordVisibility}
@@ -239,7 +279,15 @@ const Forgotpswd = () => {
                       placeholder="Enter your Password"
                       value={confirmPassword}
                       onChange={handleConfirmPasswordChange}
+                      {...register("confirmPassword", {
+                        required: "Confirm password is required",
+                        validate: (value) =>
+                          value === newPassword || "Passwords do not match",
+                      })}
                     />
+                    {errors.confirmPassword && (
+                      <p>{errors.confirmPassword.message}</p>
+                    )}
                     <span
                       className="absolute right-3 cursor-pointer"
                       onClick={togglePasswordVisibility}
@@ -255,7 +303,7 @@ const Forgotpswd = () => {
               </div>
               <div>
                 <button
-                  onClick={handleResetPassword}
+                  onClick={handleSubmit(onSubmitPassword)}
                   className="bg-orange-500 w-full h-[3rem] shadow-2xl mt-[3rem] font-bold"
                   disabled={resetLoading}
                 >
