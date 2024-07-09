@@ -3,18 +3,63 @@ import InfoPage from "../BusinessInfo/InfoPage";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { TiDownloadOutline } from "react-icons/ti";
 import { GiShakingHands } from "react-icons/gi";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useFetch from "../../features/signin/Signin-com/useFetch";
 
 const StepperPage = () => {
   const [step, setStep] = useState(1);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [nin, setNin] = useState("");
 
-  const nextStep = () => {  
+  const { fetchData, error, loading } = useFetch(
+    "http://localhost:5173/api/vendor/signup",
+    "POST"
+  );
+
+  const nextStep = () => {
     setStep(step + 1);
   };
 
   const prevStep = () => {
     setStep(step - 1);
+  };
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleFileUpload = async () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      try {
+        const data = await fetchData(formData, true);
+        console.log(data);
+        alert("File uploaded successfully!");
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        alert("Error uploading file: " + error.message);
+      }
+    } else {
+      alert("Please select a file to upload");
+    }
+  };
+
+  const authenticateNin = () => {
+    // Simple NIN authentication logic
+    const isValidNin = nin.length === 11;
+    return isValidNin;
+  };
+
+  const handleSubmit = () => {
+    if (authenticateNin()) {
+      handleFileUpload();
+      nextStep();
+    } else {
+      alert("Invalid NIN. Please enter a valid NIN.");
+    }
   };
 
   return (
@@ -28,7 +73,6 @@ const StepperPage = () => {
         </div>
 
         {/* BUSINESS REGISTRATION PHASE */}
-
         {step === 1 && (
           <div className="xl:mt-[-2rem]">
             <h2 className="text-[16px] font-extrabold mb-4 text-white">
@@ -39,11 +83,7 @@ const StepperPage = () => {
               Captivate and Engage your Target Audience
             </h4>
             <div>
-              {/* <div className="mb-[1rem]">
-                <FaRegArrowAltCircleLeft className="text-orange-500 " />
-              </div> */}
               <div>
-
                 <div className="mt-[1rem]">
                   <label className="text-[12px]">Business Name</label>
                   <br />
@@ -101,8 +141,7 @@ const StepperPage = () => {
           </div>
         )}
 
-        {/* VERIFICATION STAGE: */}
-
+        {/* VERIFICATION STAGE */}
         {step === 2 && (
           <div>
             <div>
@@ -121,13 +160,21 @@ const StepperPage = () => {
                   NIN number for further legibility proof.
                 </h4>
                 <div className="flex justify-center items-center border-dashed border-white shadow-2xl rounded">
-                  <div className="w-[12rem] h-[18rem] flex justify-center items-center">
-                    <button className="flex justify-center items-center bg-orange-500 pl-2 pr-2 pt-3">
-                      <span className="flex gap-2 justify-center items-center">
-                        <p className="text-slate-100 font-bold">Browse</p>
-                        <TiDownloadOutline className="mt-[-1rem]" />
-                      </span>
-                    </button>
+                  <div className="w-[12rem] h-[18rem] flex justify-center items-center flex-col ">
+                    <input
+                      onChange={handleFileChange}
+                      type="file"
+                      className="flex justify-center items-center flex-col bg-orange-500 cursor-pointer w-[200px]"
+                    />
+                    <span
+                      onClick={handleFileUpload}
+                      className="flex gap-2 justify-center items-center cursor-pointer bg-orange-500 mt-[.5rem] "
+                    >
+                      <p className="text-slate-100 font-bold mt-[1.2rem] p-3">
+                        Upload
+                      </p>
+                      <TiDownloadOutline className="h-[1rem] w-[1rem]" />
+                    </span>
                   </div>
                 </div>
 
@@ -137,9 +184,11 @@ const StepperPage = () => {
                   </label>
                   <div className="relative">
                     <input
-                      type="Password"
+                      type="text"
                       className="MainTime"
-                      placeholder="Enter your Mobile Number"
+                      placeholder="Enter your NIN"
+                      value={nin}
+                      onChange={(e) => setNin(e.target.value)}
                     />
                   </div>
                 </div>
@@ -163,7 +212,7 @@ const StepperPage = () => {
                   </p>
                 </div>
                 <button
-                  onClick={nextStep}
+                  onClick={handleSubmit}
                   className="w-full h-[3.2rem] bg-orange-500 font-bold"
                 >
                   Submit
@@ -174,7 +223,6 @@ const StepperPage = () => {
         )}
 
         {/* GET STARTED PHASE */}
-
         {step === 3 && (
           <div className="h-[22rem]">
             <FaRegArrowAltCircleLeft
@@ -193,9 +241,9 @@ const StepperPage = () => {
                 Thank you for submitting the details. we will review and respond
                 to you as soon as possible.
               </p>
-              <Link to="/Signin">
+              <Link to="/signin">
                 <button className="bg-orange-500 w-full h-[3rem] shadow-2xl mt-[3rem] font-bold">
-                  Let’s get started!
+                  Let's get started!
                 </button>
               </Link>
             </div>
