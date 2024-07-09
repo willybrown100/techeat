@@ -9,9 +9,11 @@ const Forgotpswd = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [step, setStep] = useState(1);
-  const [email, setEmail] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    newPassword: "",
+    confirmPassword: ""
+  });
 
   const {
     data: forgotData,
@@ -39,8 +41,6 @@ const Forgotpswd = () => {
     formState: { errors },
   } = useForm();
 
-
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -53,16 +53,8 @@ const Forgotpswd = () => {
     setStep(step - 1);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleNewPasswordChange = (e) => {
-    setNewPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onSubmitEmail = async (data) => {
@@ -85,7 +77,7 @@ const Forgotpswd = () => {
   };
 
   const onSubmitPassword = async (data) => {
-    if (newPassword !== confirmPassword) {
+    if (formData.newPassword !== formData.confirmPassword) {
       alert("Passwords do not match. Please try again.");
       return;
     }
@@ -93,9 +85,9 @@ const Forgotpswd = () => {
       const response = await resetFetchData({
         method: "POST",
         body: JSON.stringify({
-          email,
-          newPassword,
-          confirmPassword,
+          email: formData.email,
+          newPassword: formData.newPassword,
+          confirmPassword: formData.confirmPassword,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -140,8 +132,8 @@ const Forgotpswd = () => {
                   type="email"
                   className="w-[100%] bg-transparent outline-0 border-0 border-b"
                   placeholder="Enter your E-mail"
-                  value={email}
-                  onChange={handleEmailChange}
+                  // value={formData.email}
+                  onChange={handleChange}
                   {...register("email", { required: "Email is required" })}
                 />
                 {errors.email && <p>{errors.email.message}</p>}
@@ -196,7 +188,7 @@ const Forgotpswd = () => {
                 <h2 className="text-[12px] text-center">
                   We've sent an e-mail to the address
                 </h2>
-                <h4 className="text-center">{email}</h4>
+                <h4 className="text-center">{formData.email}</h4>
 
                 <div className="">
                   <h1 className="text-[10px] text-center w-[200px] ml-[2.5rem] mb-[4rem]">
@@ -246,8 +238,8 @@ const Forgotpswd = () => {
                       type={passwordVisible ? "text" : "password"}
                       className="MainTime"
                       placeholder="Enter your Password"
-                      value={newPassword}
-                      onChange={handleNewPasswordChange}
+                      value={formData.newPassword}
+                      onChange={handleChange}
                       {...register("newPassword", {
                         required: "New password is required",
                         minLength: {
@@ -277,12 +269,12 @@ const Forgotpswd = () => {
                       type={passwordVisible ? "text" : "password"}
                       className="MainTime"
                       placeholder="Enter your Password"
-                      value={confirmPassword}
-                      onChange={handleConfirmPasswordChange}
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
                       {...register("confirmPassword", {
                         required: "Confirm password is required",
                         validate: (value) =>
-                          value === newPassword || "Passwords do not match",
+                          value === formData.newPassword || "Passwords do not match",
                       })}
                     />
                     {errors.confirmPassword && (
