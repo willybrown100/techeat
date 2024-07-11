@@ -30,6 +30,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     try {
       const response = await fetchData({
+        name: data.name,
         email: data.Email,
         password: data.Password,
       });

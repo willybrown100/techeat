@@ -15,6 +15,8 @@ const StepperPage = () => {
   const [src, setSrc] = useState(null);
   const [preview, setPreview] = useState(null);
 
+  
+
   const onClose = () => {
     setPreview(null);
   };
@@ -72,6 +74,8 @@ const StepperPage = () => {
       alert("Invalid NIN. Please enter a valid NIN.");
     }
   };
+
+  
 
   return (
     <div className="absolute top-[4.5rem] xl:left-[3rem] left-0 flex items-center justify-center xl:bg-transparent h-[34rem]">
@@ -249,7 +253,7 @@ const StepperPage = () => {
               <div className="flex justify-center">
                 <img
                   src="/images/Group.png"
-                  alt=""
+                  alt="New_pics"
                   className=" text-black w-[6rem] h-[6rem] rounded-full mt-[-3rem] mb-[3rem]"
                 />
               </div>
