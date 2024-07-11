@@ -46,13 +46,12 @@ const Contact = () => {
 
   return (
     <div className="absolute xl:left-2 left-[1rem] bg-opacity-10 bg-transparent xl:backdrop-blur-xl xl:w-[550px] w-[22rem] xl:h-[47rem] xl:top-[37.2rem] top-[48rem] xl:p-[5rem] p-4 rounded">
-      <div className="flex justify-between items-center mt-[-1rem]">
+      <div className="flex justify-between items-center mt-[-1rem] mb-[4rem]">
         <div className="flex gap-[.6rem] items-center">
           <input
             onClick={() => setView("customer")}
             className="accent-orange-500 cursor-pointer"
             type="radio"
-            name="user_type"
             checked={view === "customer"}
           />
           <span onClick={() => setView("customer")}>
@@ -66,7 +65,6 @@ const Contact = () => {
             onClick={() => setView("vendor")}
             className="accent-orange-500 cursor-pointer"
             type="radio"
-            name="user_type"
             checked={view === "vendor"}
           />
           <span onClick={() => setView("vendor")}>
@@ -87,7 +85,7 @@ const Contact = () => {
             right to your door.
           </h4>
 
-          <div className="mt-[1rem]">
+          {/* <div className="mt-[1rem]">
             <label className="text-[12px]">Name</label>
             <br />
             <input
@@ -103,7 +101,7 @@ const Contact = () => {
                 Name is required
               </p>
             )}
-          </div>
+          </div> */}
 
           <div className="Input-Data mt-[1rem]">
             <label className="text-[12px]">Email</label>
