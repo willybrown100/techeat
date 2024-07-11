@@ -5,6 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import useFetch from "./useFetchside";
 import { useForm } from "react-hook-form";
 
+/**
+ * Forgotpswd component handles the forgot password process.
+ * @component
+ */
 const Forgotpswd = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -41,22 +45,39 @@ const Forgotpswd = () => {
     formState: { errors },
   } = useForm();
 
+  /**
+   * Toggles the visibility of the password.
+   */
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
+  /**
+   * Advances to the next step in the process.
+   */
   const nextStep = () => {
     setStep(step + 1);
   };
 
+  /**
+   * Returns to the previous step in the process.
+   */
   const prevStep = () => {
     setStep(step - 1);
   };
 
+  /**
+   * Handles input changes and updates formData state.
+   * @param {Object} e - The event object.
+   */
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Submits the email for password reset.
+   * @param {Object} data - The form data.
+   */
   const onSubmitEmail = async (data) => {
     try {
       const response = await forgotFetchData({
@@ -76,6 +97,10 @@ const Forgotpswd = () => {
     }
   };
 
+  /**
+   * Submits the new password for reset.
+   * @param {Object} data - The form data.
+   */
   const onSubmitPassword = async (data) => {
     if (formData.newPassword !== formData.confirmPassword) {
       alert("Passwords do not match. Please try again.");
@@ -132,7 +157,7 @@ const Forgotpswd = () => {
                   type="email"
                   className="w-[100%] bg-transparent outline-0 border-0 border-b"
                   placeholder="Enter your E-mail"
-                  // value={formData.email}
+                  value={formData.email}
                   onChange={handleChange}
                   {...register("email", { required: "Email is required" })}
                 />
