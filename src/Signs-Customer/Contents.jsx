@@ -35,7 +35,7 @@ const Contents = () => {
           body: JSON.stringify({
             name: data.name,
             email: data.Email,
-            password: data.Password,
+            Password: data.Password,
           }),
           headers: {
             "Content-Type": "application/json",
