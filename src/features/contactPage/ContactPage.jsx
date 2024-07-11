@@ -59,7 +59,7 @@ function ContactPage() {
                placeholder="enter your email"
                id="email"
                {...register("email")}
-               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full md:p-[4px] p-[8px]"
+               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] rounded-sm w-full md:p-[4px] p-[8px]"
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">

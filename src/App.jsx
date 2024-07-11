@@ -17,7 +17,7 @@ import AppLayout from "../src/components/applayout/AppLayout";
 import RootLayout from "./Layouts/RootLayout";
 import AppLayoutHome from "./components/applayout/applayouthome/AppLayoutHome";
 import AppLayoutOrderHistory from "./components/applayout/AppLayoutOrderHistory";
-import AppLayoutHelp from "./components/applayout/AppLayoutHelp";
+import AppLayoutHelp from "../src/components/applayout/applayoutHelp/AppLayoutHelp";
 import AppLayoutLogout from "./components/applayout/AppLayoutLogout";
 import AppLayoutSettings from "./components/applayout/AppLayoutSettings";
 import AppLayoutMenu from "./components/applayout/applayoutMenu/AppLayoutMenu";

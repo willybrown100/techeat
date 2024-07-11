@@ -10,7 +10,6 @@ import TopMenu from "./TopMenu";
 function HomePage() {
  return (
    <section >
-     {/* <Navbar /> */}
      
      <Header/>
    <TopMenu/>
