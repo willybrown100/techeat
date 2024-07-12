@@ -45,6 +45,8 @@ const Contents = () => {
             email: data.Email,
             password: data.Password,
             name: data.UserName,
+
+
           }),
           headers: {
             "Content-Type": "application/json",

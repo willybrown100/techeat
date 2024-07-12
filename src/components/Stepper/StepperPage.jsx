@@ -5,15 +5,28 @@ import { TiDownloadOutline } from "react-icons/ti";
 import { GiShakingHands } from "react-icons/gi";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Avatar from "react-avatar-edit";
 import useFetch from "../../features/signin/Signin-com/useFetch";
 
 const StepperPage = () => {
   const [step, setStep] = useState(1);
   const [selectedFile, setSelectedFile] = useState(null);
   const [nin, setNin] = useState("");
+  const [src, setSrc] = useState(null);
+  const [preview, setPreview] = useState(null);
+
+  
+
+  const onClose = () => {
+    setPreview(null);
+  };
+
+  const onCrop = (view) => {
+    setPreview(view);
+  };
 
   const { fetchData, error, loading } = useFetch(
-    "http://localhost:5173/api/vendor/signup",
+    "https://techeat-server-1.onrender.com/api/auth/register",
     "POST"
   );
 
@@ -55,12 +68,14 @@ const StepperPage = () => {
 
   const handleSubmit = () => {
     if (authenticateNin()) {
-      handleFileUpload();
+      // handleFileUpload();
       nextStep();
     } else {
       alert("Invalid NIN. Please enter a valid NIN.");
     }
   };
+
+  
 
   return (
     <div className="absolute top-[4.5rem] xl:left-[3rem] left-0 flex items-center justify-center xl:bg-transparent h-[34rem]">
@@ -161,20 +176,25 @@ const StepperPage = () => {
                 </h4>
                 <div className="flex justify-center items-center border-dashed border-white shadow-2xl rounded">
                   <div className="w-[12rem] h-[18rem] flex justify-center items-center flex-col ">
-                    <input
-                      onChange={handleFileChange}
-                      type="file"
-                      className="flex justify-center items-center flex-col bg-orange-500 cursor-pointer w-[200px]"
+                    <Avatar
+                      width={300}
+                      height={280}
+                      oncrop={onCrop}
+                      onclose={onClose}
+                      src={src}
+                      // onChange={handleFileChange}
+                      // type="file"
+                      className=" relative flex justify-center items-center flex-col bg-orange-500 cursor-pointer w-[200px]"
                     />
-                    <span
+                    {/* <span
                       onClick={handleFileUpload}
-                      className="flex gap-2 justify-center items-center cursor-pointer bg-orange-500 mt-[.5rem] "
+                      className="flex gap-2 justify-center items-center cursor-pointer bg-orange-500 mt-[.5rem] absolute"
                     >
                       <p className="text-slate-100 font-bold mt-[1.2rem] p-3">
                         Upload
                       </p>
                       <TiDownloadOutline className="h-[1rem] w-[1rem]" />
-                    </span>
+                    </span> */}
                   </div>
                 </div>
 
@@ -233,7 +253,7 @@ const StepperPage = () => {
               <div className="flex justify-center">
                 <img
                   src="/images/Group.png"
-                  alt=""
+                  alt="New_pics"
                   className=" text-black w-[6rem] h-[6rem] rounded-full mt-[-3rem] mb-[3rem]"
                 />
               </div>
