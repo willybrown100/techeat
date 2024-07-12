@@ -13,8 +13,8 @@ export default function AppLayoutNav() {
     <nav className="bg-black p-[1rem] px-3 ">
       <div className="flex justify-between max-w-[1170px] mx-auto items-center">
         <h4 className="mb-0">welcome x</h4>
-        <form className="w-[350px] ">
-          <div className="flex bg-stone-50 px-2 rounded-sm">
+        <form className="w-[370px] ">
+          <div className="flex bg-stone-50 px-2 py-1 rounded-sm">
             <input type="text" placeholder="search by food name" className="outline-none text-black placeholder:text-[0.8rem]   bg-transparent w-full " />
             <button>
               <HiMagnifyingGlass className="text-black" />

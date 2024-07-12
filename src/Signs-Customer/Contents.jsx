@@ -54,6 +54,7 @@ const Contents = () => {
       console.error("Sign-up error:", error);
     }
     reset();
+    console.log(data)
   };
 
   return (

@@ -1,8 +1,12 @@
 import React from 'react'
 import Button from '../../../ui/Button'
+import CartButton from '../../cart/CartButton'
 
 export default function PopularMenu({item}) {
     const {img,name,vendor,ratings,price}=item
+    const handleAddItem = function(){
+      console.log(name)
+    }
   return (
     <li className='bg-white rounded-md'>
 
@@ -17,7 +21,7 @@ export default function PopularMenu({item}) {
         <span className=' text-brand font-semibold'>{price}</span>
         </div>
         <div className='flex justify-between mt-2 gap-2'>
-          <button className='border-brand border text-sm capitalize p-1 text-brand rounded-md font-semibold'>add to cart</button>
+          <CartButton onClick={handleAddItem} >add to cart</CartButton>
           <button className="text-white text-sm capitalize bg-brand font-semibold p-1 rounded-md">order now</button>
         </div>
         </div>

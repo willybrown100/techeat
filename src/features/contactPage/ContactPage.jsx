@@ -7,20 +7,22 @@ import toast from "react-hot-toast";
 function ContactPage() {
    const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
    const {register,reset,handleSubmit}=useForm()
-   const {mutate}= useMutation({
+   const {mutate,isPending}= useMutation({
      mutationFn:submitContact,
-     onSuccess :()=>{
+     onSuccess :(data)=>{
+      console.log(data)
+      
        toast.success("your details have been succesfully submited")
-       reset()
+     
     },
     onError:()=>{
-      toast.error("error")
+      toast.error("details could'nt be submitted")
     }
   })
   const onSubmit = function(data){
-   mutate(data)
+   mutate(data,{onSettled:()=>reset()})
    console.log(data)
-  //  console.log()
+
   }
  return (
    <>
@@ -80,7 +82,7 @@ function ContactPage() {
            </label>
            <textarea
              type="text"
-             id="message"JJJJJKKKKKKKKKIKJI
+             id="message"
              {...register("message")}
              placeholder="enter your message"
              className="w-full block text-black placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
