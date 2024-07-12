@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useFetch from "./../features/signup/useFetch";
 import StepperPage from "../components/Stepper/StepperPage";
+import axios from "axios";
 
 const Contents = () => {
   const [toggle, setToggle] = useState(false);
@@ -27,6 +28,14 @@ const Contents = () => {
   const StepperToggle = () => setStepper(!stepper);
 
   const onSubmit = async (data) => {
+    // const res = await axios.post(
+    //   `https://techeat-server-1.onrender.com/api/auth/register`,
+    //   {
+    //     email: data.Email,
+    //     password: data.Password,
+    //     user_type: data.user_type,
+    //   }
+    // );
     try {
       const response = await fetchData(
         "https://techeat-server-1.onrender.com/api/auth/register",
@@ -35,7 +44,7 @@ const Contents = () => {
           body: JSON.stringify({
             email: data.Email,
             password: data.Password,
-            user_type: data.user_type,
+            name: data.UserName,
           }),
           headers: {
             "Content-Type": "application/json",

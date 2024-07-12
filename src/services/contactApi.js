@@ -1,4 +1,5 @@
 export async function submitContact(data){
+  console.log(data);
     try {
         const response = await fetch("https://techeat-server-1.onrender.com/api/contact-us", {
           method: 'POST',
