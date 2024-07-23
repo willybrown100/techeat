@@ -6,12 +6,14 @@ import { useForm } from "react-hook-form";
 import useFetch from "./../features/signup/useFetch";
 import StepperPage from "../components/Stepper/StepperPage";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getUserId } from "../utils/userSlice";
 
 const Contents = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const [stepper, setStepper] = useState(false);
-
+const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const {
@@ -55,7 +57,8 @@ const Contents = () => {
       );
       console.log("Response from fetchData:", response);
       if (response) {
-        if (data.user_type === "Vendor") {
+
+        if (data.role === "Vendor") {
           setStepper(true);
         } else {
           navigate("/signin");

@@ -5,8 +5,15 @@ import Vend2 from "../../../Vendor/Vend2";
 import Forgotpswd from "../../../components/Stepper2/Forgotpswd";
 import { useForm } from "react-hook-form";
 import useFetch from "./../Signin-com/useFetch";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserId } from "../../../utils/userSlice";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Contact = () => {
+   const queryClient = useQueryClient();
+   const userid = useSelector((state) => state.user.userId);
+   const dispatch = useDispatch()
+   console.log(userid)
   const [view, setView] = useState("customer");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
@@ -28,14 +35,21 @@ const Contact = () => {
   };
 
   const onSubmit = async (data) => {
+   
     try {
       const response = await fetchData({
         email: data.Email,
         password: data.Password,
       });
-
       if (response) {
-        navigate("/signin");
+        console.log(response)
+// const user=JSON.stringify(response)
+queryClient.invalidateQueries({queryKey:["user"]})
+
+// console.log(user)
+localStorage.setItem("userDetails", JSON.stringify(response));
+
+        navigate("/appLayout");
       }
     } catch (err) {
       console.log(err);
