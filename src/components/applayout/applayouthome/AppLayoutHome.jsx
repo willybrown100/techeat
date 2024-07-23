@@ -7,6 +7,7 @@ import VendorsItem from "./VendorsItem";
 import MenuList from "../../MenuList";
 import VendorList from "../VendorList";
 import MenuVendorsItem from "../applayoutMenu/MenuVendorsItem";
+import useProducts from "../../../hooks/useProducts";
 
 const vendors = [
   { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
@@ -26,20 +27,22 @@ const vendors = [
   { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
 ];
 
- const popularMenu = [
-   { img: "/images/Frame 1171277030.png", name:"barbeque chicken",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/Frame 1171277030 (1).png", name:"asun",vendor:"food by betty",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/jollof.png", name:"jollof rice",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/image 88 (1).png", name:"fried rice",vendor:"rikks delight",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/semo.png", name:"pounded yam",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/spag.png", name:"spaghetti",vendor:"rikks delight",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/doughnut.png", name:"cheese burger",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
-   { img: "/images/dogh.png", name:"doughnut",vendor:"aries doughnut",price:5000, ratings:"/images/3star.png" },
+ const popularMenus = [
+   { images: "/images/Frame 1171277030.png", name:"barbeque chicken",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/Frame 1171277030 (1).png", name:"asun",vendor:"food by betty",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/jollof.png", name:"jollof rice",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/image 88 (1).png", name:"fried rice",vendor:"rikks delight",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/semo.png", name:"pounded yam",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/spag.png", name:"spaghetti",vendor:"rikks delight",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/doughnut.png", name:"cheese burger",vendor:"grace kitchen",price:5000, ratings:"/images/3star.png" },
+   { images: "/images/dogh.png", name:"doughnut",vendor:"aries doughnut",price:5000, ratings:"/images/3star.png" },
  ];
 
-
-
-export default function AppLayoutHome() {
+ 
+ 
+ export default function AppLayoutHome() {
+   const  { allProducts, isLoading }=useProducts()
+   const popularMenu = allProducts.slice(0,8)
   const className = "max-w-[810px] py-4 mx-auto   ";
   return (
     <article className="grid grid-cols-[1fr,17rem] ">

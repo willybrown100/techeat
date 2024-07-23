@@ -5,12 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useFetch from "./../features/signup/useFetch";
 import StepperPage from "../components/Stepper/StepperPage";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getUserId } from "../utils/userSlice";
 
 const Contents = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const [stepper, setStepper] = useState(false);
-
+const dispatch = useDispatch()
   const navigate = useNavigate();
 
   const {
@@ -27,15 +30,25 @@ const Contents = () => {
   const StepperToggle = () => setStepper(!stepper);
 
   const onSubmit = async (data) => {
+    // const res = await axios.post(
+    //   `https://techeat-server-1.onrender.com/api/auth/register`,
+    //   {
+    //     email: data.Email,
+    //     password: data.Password,
+    //     user_type: data.user_type,
+    //   }
+    // );
     try {
       const response = await fetchData(
         "https://techeat-server-1.onrender.com/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
-            name: data.name,
             email: data.Email,
-            Password: data.Password,
+            password: data.Password,
+            name: data.UserName,
+
+
           }),
           headers: {
             "Content-Type": "application/json",
@@ -44,7 +57,8 @@ const Contents = () => {
       );
       console.log("Response from fetchData:", response);
       if (response) {
-        if (data.user_type === "Vendor") {
+
+        if (data.role === "Vendor") {
           setStepper(true);
         } else {
           navigate("/signin");
