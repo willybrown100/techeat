@@ -1,7 +1,7 @@
 const userInfo = localStorage.getItem("userDetails");
-const userToken = JSON.parse(userInfo)
+const userToken = userInfo ? JSON.parse(userInfo) : {}; // Check for null
 
- console.log(userToken.token);
+console.log(userToken.token); // This may still throw if token is undefined
 export async function getUser(){
     try {
         const response = await fetch(
