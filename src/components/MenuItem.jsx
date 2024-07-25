@@ -1,6 +1,6 @@
 function MenuItem({item}) {
  return (
-  <li className="border bg-stone-50 ml-4 rounded-md">
+  <div className="border bg-stone-50 ml-4 rounded-md">
 <img src={item.img} alt="img" className="h-[15rem] object-cover"/>
 
 <div className="p-2">
@@ -15,7 +15,7 @@ function MenuItem({item}) {
 <button className="bg-brand rounded-md text-white capitalize p-2 border-brand">order now</button>
 </div>
 </div>
-  </li>
+  </div>
 
  )
 }

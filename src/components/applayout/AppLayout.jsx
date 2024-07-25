@@ -7,7 +7,7 @@ function AppLayout() {
     <div className="md:grid h-[100vh] md:grid-cols-[13rem,1fr] md:grid-rows-[auto,1fr]">
       <AppLayoutNav />
       <AppLayoutSide />
-      <main className="bg-stone-100">
+      <main className="bg-stone-50">
         <Outlet />
       </main>
     </div>

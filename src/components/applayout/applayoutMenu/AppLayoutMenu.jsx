@@ -1,99 +1,128 @@
-import React from 'react'
-import MenuLink from './MenuLink';
-import Mycart from '../../cart/Mycart';
-import MenuVendorsItem from './MenuVendorsItem';
-import Carousel from 'react-multi-carousel';
-import PopularMenu from '../applayouthome/PopularMenu';
-import { Outlet, useLocation } from 'react-router-dom';
-import MenuList from '../../MenuList';
-import VendorList from '../VendorList';
-import { current } from '@reduxjs/toolkit';
- const popularMenu = [
-   {
-     img: "/images/Frame 1171277030.png",
-     name: "barbeque chicken",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/Frame 1171277030 (1).png",
-     name: "asun",
-     vendor: "food by betty",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/jollof.png",
-     name: "jollof rice",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/image 88 (1).png",
-     name: "fried rice",
-     vendor: "rikks delight",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/semo.png",
-     name: "pounded yam",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/spag.png",
-     name: "spaghetti",
-     vendor: "rikks delight",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/doughnut.png",
-     name: "cheese burger",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/dogh.png",
-     name: "doughnut",
-     vendor: "aries doughnut",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/semo.png",
-     name: "pounded yam",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/spag.png",
-     name: "spaghetti",
-     vendor: "rikks delight",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/doughnut.png",
-     name: "cheese burger",
-     vendor: "grace kitchen",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
-   {
-     img: "/images/dogh.png",
-     name: "doughnut",
-     vendor: "aries doughnut",
-     price: 5000,
-     ratings: "/images/3star.png",
-   },
- ];
+import React, { useState } from "react";
+import MenuLink from "./MenuLink";
+import Mycart from "../../cart/Mycart";
+import MenuVendorsItem from "./MenuVendorsItem";
+import Carousel from "react-multi-carousel";
+import PopularMenu from "../applayouthome/PopularMenu";
+import { Outlet, useLocation } from "react-router-dom";
+import MenuList from "../../MenuList";
+import VendorList from "../VendorList";
+import { current } from "@reduxjs/toolkit";
+import CartItems from "../../../ui/CartModal";
+import CartModal from "../../../ui/CartModal";
+import { useSelector } from "react-redux";
+import { addToCart } from "../../../services/userData";
+import useProducts from "../../../hooks/useProducts";
+// const popularMenu = [
+//   {
+//     productId: "123456789123456789123456",
+//     img: "/images/Frame 1171277030.png",
+//     name: "barbeque chicken",
+//     vendor: "grace kitchen",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "2",
+//     img: "/images/Frame 1171277030 (1).png",
+//     name: "asun",
+//     vendor: "food by betty",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "3",
+//     img: "/images/jollof.png",
+//     name: "jollof rice",
+//     vendor: "grace kitchen",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "4",
+//     img: "/images/image 88 (1).png",
+//     name: "fried rice",
+//     vendor: "rikks delight",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "5",
+//     img: "/images/semo.png",
+//     name: "pounded yam",
+//     vendor: "grace kitchen",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "6",
+//     img: "/images/spag.png",
+//     name: "spaghetti",
+//     vendor: "rikks delight",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "7",
+//     img: "/images/doughnut.png",
+//     name: "cheese burger",
+//     vendor: "grace kitchen",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "8",
+//     img: "/images/dogh.png",
+//     name: "doughnut",
+//     vendor: "aries doughnut",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "9",
+//     img: "/images/semo.png",
+//     name: "pounded yam",
+//     vendor: "grace kitchen",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "10",
+//     img: "/images/spag.png",
+//     name: "spaghetti",
+//     vendor: "rikks delight",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+//   {
+//     productId: "11",
+//     img: "/images/doughnut.png",
+//     name: "cheese burger",
+//     vendor: "grace kitchen",
+//     quantity: 1,
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//   },
+//   {
+//     productId: "12",
+//     img: "/images/dogh.png",
+//     name: "doughnut",
+//     vendor: "aries doughnut",
+//     price: 5000,
+//     ratings: "/images/3star.png",
+//     quantity: 1,
+//   },
+// ];
 
 const link = [
   {
@@ -121,15 +150,30 @@ const vendors = [
     img: "/images/foodBetty.jpg",
     vendorName: "food by betty",
   },
-  { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
-  { img: "/images/riksdelight.jpg", vendorName: "rikks delight" },
+  { img: "/images/riksdelight.jpg", vendorName: "riks delight" },
+  { img: "/images/riksdelight.jpg", vendorName: "riks delight" },
 ];
 
 export default function AppLayoutMenu() {
-        const { pathname } = useLocation();
+ 
+  const { allProducts, isLoading } = useProducts();
+  const popularMenu = allProducts.slice(0, 8);
+const userId=localStorage.getItem("userId")
+console.log(userId)
+  const [perItem, setPerItem] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const handleClick = function (item) {
+    console.log(item)
+    const { price, name, _id:productId, quantity } = item;
+    setPerItem(item);
+    setOpenModal(true);
+    console.log(item);
+    addToCart({userId, price, name,productId, quantity});
+  };
+  const { pathname } = useLocation();
 
-        console.log(pathname);
-   const className = "max-w-[810px] py-4 mx-auto   ";
+  console.log(pathname);
+  const className = "max-w-[810px] py-4 mx-auto   ";
   return (
     <article className="grid grid-cols-[1fr,17rem] gap-2">
       <div className={`${className}`}>
@@ -141,7 +185,7 @@ export default function AppLayoutMenu() {
             <MenuLink item={item} key={item.title} />
           ))}
         </div>
-        {pathname === "/applayout/appmenu" && (
+        {pathname === "/appLayout/appmenu" && (
           <>
             <div className="pt-6">
               <h4 className="text-black font-headings font-semibold">
@@ -159,11 +203,19 @@ export default function AppLayoutMenu() {
                 our top meal this week
               </h4>
 
-              {/* {popularMenu.map((item)=><PopularMenu item={item} key={item.img}/>)} */}
+              
               <MenuList
                 popularMenu={popularMenu}
-                render={(item) => <PopularMenu item={item} key={item.img} />}
+                loading={isLoading}
+                render={(item) => (
+                  <PopularMenu
+                    item={item}
+                    key={item.id}
+                    onClick={() => handleClick(item)}    
+                  />
+                )}
               />
+              {openModal && <CartModal perItem={perItem} />}
             </div>
           </>
         )}
@@ -173,7 +225,6 @@ export default function AppLayoutMenu() {
     </article>
   );
 }
-
 
 const responsive = {
   superLargeDesktop: {

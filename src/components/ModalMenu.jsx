@@ -1,9 +1,15 @@
 import { LinkOutlined } from "@mui/icons-material"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleBar } from "../utils/sideBarSlice";
 
 function ModalMenu (){
-
+  const open = useSelector((state) => state.sideBar.open);
+  const dispatch = useDispatch()
+  const handleClick = function(){
+dispatch(toggleBar(!open));
+  }
 return (
   <motion.div
     initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
@@ -12,13 +18,16 @@ return (
   >
     <nav className="flex flex-col capitalize text-black text-center gap-y-6 items-center justify-center">
       <ul className="flex flex-col mb-5 gap-y-4">
-        <li>
+        <li onClick={handleClick}>
           {" "}
-          <Link className="capitalize text-black hover:text-brand font-semibold text-[1rem]">
+          <Link
+            to="/"
+            className="capitalize text-black hover:text-brand font-semibold text-[1rem]"
+          >
             home
           </Link>
         </li>
-        <li>
+        <li onClick={handleClick}>
           {" "}
           <Link
             className="font-semibold text-black hover:text-brand text-[1rem]"
@@ -27,7 +36,7 @@ return (
             menu
           </Link>{" "}
         </li>
-        <li>
+        <li onClick={handleClick}>
           <Link
             to="/about"
             className="hover:text-brand text-black tracking-[1px] text-[1rem] font-semibold"
@@ -35,7 +44,7 @@ return (
             about us
           </Link>
         </li>
-        <li>
+        <li onClick={handleClick}>
           {" "}
           <Link
             to="contact"
@@ -47,7 +56,7 @@ return (
       </ul>
 
       <ul className="flex flex-col items-center gap-y-6">
-        <li>
+        <li onClick={handleClick}>
           <Link
             to="contactus"
             className="border-brand border px-16 tracking-wide py-2 rounded-md text-brand"
@@ -55,7 +64,7 @@ return (
             login
           </Link>
         </li>
-        <li>
+        <li  onClick={handleClick}>
           <Link
             to="contactus"
             className="bg-brand py-2 rounded-md font-semibold text-white px-4"

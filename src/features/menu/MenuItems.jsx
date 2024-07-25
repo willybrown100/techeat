@@ -2,10 +2,10 @@ import Button from "../../ui/Button"
 import React from 'react'
 
 export default function MenuItems({item}) {
-    const { img, name, note, imgRating, vendorName ,price} = item;
+    const { image, name, note, imgRating, vendorName ,price} = item;
   return (
     <li className="text-black border mb-8 border-stone-800 rounded-[0.5rem] md:border-stone-200">
-      <img src={img} alt="img" className="" />
+      <img src={image} alt="img" className="h-[18rem] object-cover" />
       <div className=" p-2 ">
         <div className="flex items-center justify-between">
           <h4 className="text-lg font-semibold font-headings text-black">

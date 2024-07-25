@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import { HiChevronRight } from "react-icons/hi2";
+import Pagination from "../../ui/Pagination";
+import useProducts from "../../hooks/useProducts";
 
 const menu = [
   {
@@ -134,6 +136,8 @@ const menu = [
 ];
 
 function Menu() {
+  const { allProducts, isLoading } = useProducts();
+  console.log(allProducts);
     const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
  return (
    <section className="text-black">
@@ -174,18 +178,18 @@ function Menu() {
        <h2 className="text-brand font-headings font-semibold text-center md:hidden">
          top menu
        </h2>
+       <div className="w-[19rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
+       <h3 className="text-brand hidden my-2 md:block  font-headings font-semibold text-center uppercase">
+         explore our menu
+       </h3>
+       <div className="w-[19rem] hidden md:block h-[0.2rem] mb-4 bg-brand m-auto"></div>
+
        <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
-         {menu.map((item) => (
-           <MenuItems item={item} />
+         {allProducts?.map((item) => (
+           <MenuItems item={item} key={item._id}/>
          ))}
        </ul>
-       <Link
-         to="/signup"
-         className="text-brand flex items-center justify-end font-semibold"
-       >
-         <span className="text-lg font-semibold">see more</span>
-         <HiChevronRight className="text-3xl font-semibold" />
-       </Link>
+       <Pagination count={63} />
      </article>
    </section>
  );
