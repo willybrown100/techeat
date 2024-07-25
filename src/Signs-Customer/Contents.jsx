@@ -33,7 +33,7 @@ const Contents = () => {
         {
           method: "POST",
           body: JSON.stringify({
-            name: data.name,
+            name: data.username,
             email: data.Email,
             Password: data.Password,
           }),
@@ -54,7 +54,7 @@ const Contents = () => {
       console.error("Sign-up error:", error);
     }
     reset();
-    console.log(data)
+    console.log(data);
   };
 
   return (
