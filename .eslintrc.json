@@ -1,3 +1,4 @@
 {
-  "extends":"react-app"
+  "$schema": "http://json.schemastore.org/eslintrc",
+  "extends": "react-app"
 }

@@ -8,16 +8,27 @@ import useFetch from "./../Signin-com/useFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserId } from "../../../utils/userSlice";
 import { useQueryClient } from "@tanstack/react-query";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "./../../../../firebase/firebaseConfig";
 
 const Contact = () => {
-   const queryClient = useQueryClient();
-   const userid = useSelector((state) => state.user.userId);
-   const dispatch = useDispatch()
-   console.log(userid)
+  const queryClient = useQueryClient();
+  const userid = useSelector((state) => state.user.userId);
+  const dispatch = useDispatch();
+  console.log(userid);
   const [view, setView] = useState("customer");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
+  const handleGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/"); // Redirect to dashboard or any other page after successful sign-in
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
+  };
   const {
     register,
     handleSubmit,
@@ -35,19 +46,18 @@ const Contact = () => {
   };
 
   const onSubmit = async (data) => {
-   
     try {
       const response = await fetchData({
         email: data.Email,
         password: data.Password,
       });
       if (response) {
-        console.log(response)
-// const user=JSON.stringify(response)
-queryClient.invalidateQueries({queryKey:["user"]})
+        console.log(response);
+        // const user=JSON.stringify(response)
+        queryClient.invalidateQueries({ queryKey: ["user"] });
 
-// console.log(user)
-localStorage.setItem("userDetails", JSON.stringify(response));
+        // console.log(user)
+        localStorage.setItem("userDetails", JSON.stringify(response));
 
         navigate("/appLayout");
       }
@@ -210,7 +220,10 @@ localStorage.setItem("userDetails", JSON.stringify(response));
             <hr className="w-[12rem] bg-slate-800" />
           </div>
 
-          <button className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]">
+          <button
+            onClick={handleGoogle}
+            className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]"
+          >
             <span className="flex justify-center items-center gap-2">
               <img
                 className="w-[24px]"

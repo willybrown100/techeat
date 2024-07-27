@@ -5,16 +5,30 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useFetch from "./../features/signup/useFetch";
 import StepperPage from "../components/Stepper/StepperPage";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { getUserId } from "../utils/userSlice";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "./../../firebase/firebaseConfig";
 
 const Contents = () => {
   const [toggle, setToggle] = useState(false);
   const [open, setOpen] = useState(false);
   const [stepper, setStepper] = useState(false);
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Google sign-in successful:", user);
+      // You can dispatch user information to the Redux store if needed
+      // dispatch(getUserId(user.uid));
+      navigate("/dashboard"); // Redirect to dashboard or any other page after successful sign-in
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
+  };
 
   const {
     register,
@@ -30,14 +44,6 @@ const dispatch = useDispatch()
   const StepperToggle = () => setStepper(!stepper);
 
   const onSubmit = async (data) => {
-    // const res = await axios.post(
-    //   `https://techeat-server-1.onrender.com/api/auth/register`,
-    //   {
-    //     email: data.Email,
-    //     password: data.Password,
-    //     user_type: data.user_type,
-    //   }
-    // );
     try {
       const response = await fetchData(
         "https://techeat-server-1.onrender.com/api/auth/register",
@@ -47,8 +53,6 @@ const dispatch = useDispatch()
             email: data.Email,
             password: data.Password,
             name: data.UserName,
-
-
           }),
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +61,6 @@ const dispatch = useDispatch()
       );
       console.log("Response from fetchData:", response);
       if (response) {
-
         if (data.role === "Vendor") {
           setStepper(true);
         } else {
@@ -96,6 +99,7 @@ const dispatch = useDispatch()
           open={open}
           ToggleOpen={ToggleOpen}
           loading={loading}
+          handleGoogle={handleGoogle}
         />
       ) : (
         <StepperPage />
@@ -130,6 +134,7 @@ const SignUpForm = ({
   open,
   ToggleOpen,
   loading,
+  handleGoogle,
 }) => (
   <form onSubmit={handleSubmit(onSubmit)} className="">
     <h1 className="font-Roboto Slab w-[400px] font-bold text-[22px] text-left text-white mt-[1rem]">
@@ -220,7 +225,11 @@ const SignUpForm = ({
       <hr className="w-[12rem] bg-slate-800" />
     </div>
 
-    <button className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]">
+    <button
+      onClick={handleGoogle}
+      className="w-full h-[3.2rem] bg-slate-800 mt-[1rem]"
+      type="button"
+    >
       <span className="flex justify-center items-center gap-2">
         <img
           className="w-[24px]"
