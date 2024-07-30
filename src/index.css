@@ -47,7 +47,16 @@ top: 0.2rem;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.navfixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 4;
 
+
+}
 .spinner {
   animation: spin 1s linear infinite;
 }

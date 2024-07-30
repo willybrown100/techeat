@@ -136,7 +136,7 @@ const menu = [
 ];
 
 function Menu() {
-  const { allProducts, isLoading } = useProducts();
+  const { allProducts, isLoading, lenght } = useProducts();
   console.log(allProducts);
     const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
  return (
@@ -186,10 +186,10 @@ function Menu() {
 
        <ul className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-2">
          {allProducts?.map((item) => (
-           <MenuItems item={item} key={item._id}/>
+           <MenuItems item={item} key={item._id} />
          ))}
        </ul>
-       <Pagination count={63} />
+       <Pagination count={lenght} />
      </article>
    </section>
  );

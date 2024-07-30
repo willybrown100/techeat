@@ -1,9 +1,13 @@
-// import { useQuery } from '@tanstack/react-query'
-// import React from 'react'
-// import { getUser } from '../services/userData'
-//  const userId = localStorage.getItem("userId");
-// export default function useUser() {
-//     const {data={},isLoading}= useQuery({queryKey:["user"],queryFn:getUser,staleTime:0, cacheTime:0,refetchOnWindowFocus:true,refetchInterval:false})
-//  console.log(data);
-//  return {data,isLoading}
-// }
+import React from 'react'
+
+export default function useUser() {
+     const userInfo = localStorage.getItem("userDetails");
+     const authUserData = JSON.parse(userInfo);
+     const userId = authUserData?.user?._id
+     console.log(authUserData?.token);
+  return { authUserData, userId };
+}
+
+function authUser(){
+  
+}

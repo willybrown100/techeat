@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from '../../../ui/Button'
 import CartButton from '../../cart/CartButton'
 import Modal from '../../../ui/Modal';
+import { CartContext } from '../../../CartContext';
 
 export default function PopularMenu({item,onClick}) {
+    const { refetch } = useContext(CartContext);
   const [openModal, setOpenModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
     const {image,name,vendor,ratings,price}=item

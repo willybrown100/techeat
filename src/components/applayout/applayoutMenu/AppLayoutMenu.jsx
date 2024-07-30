@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MenuLink from "./MenuLink";
 import Mycart from "../../cart/Mycart";
 import MenuVendorsItem from "./MenuVendorsItem";
@@ -13,116 +13,11 @@ import CartModal from "../../../ui/CartModal";
 import { useSelector } from "react-redux";
 import { addToCart } from "../../../services/userData";
 import useProducts from "../../../hooks/useProducts";
-// const popularMenu = [
-//   {
-//     productId: "123456789123456789123456",
-//     img: "/images/Frame 1171277030.png",
-//     name: "barbeque chicken",
-//     vendor: "grace kitchen",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "2",
-//     img: "/images/Frame 1171277030 (1).png",
-//     name: "asun",
-//     vendor: "food by betty",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "3",
-//     img: "/images/jollof.png",
-//     name: "jollof rice",
-//     vendor: "grace kitchen",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "4",
-//     img: "/images/image 88 (1).png",
-//     name: "fried rice",
-//     vendor: "rikks delight",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "5",
-//     img: "/images/semo.png",
-//     name: "pounded yam",
-//     vendor: "grace kitchen",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "6",
-//     img: "/images/spag.png",
-//     name: "spaghetti",
-//     vendor: "rikks delight",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "7",
-//     img: "/images/doughnut.png",
-//     name: "cheese burger",
-//     vendor: "grace kitchen",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "8",
-//     img: "/images/dogh.png",
-//     name: "doughnut",
-//     vendor: "aries doughnut",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "9",
-//     img: "/images/semo.png",
-//     name: "pounded yam",
-//     vendor: "grace kitchen",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "10",
-//     img: "/images/spag.png",
-//     name: "spaghetti",
-//     vendor: "rikks delight",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-//   {
-//     productId: "11",
-//     img: "/images/doughnut.png",
-//     name: "cheese burger",
-//     vendor: "grace kitchen",
-//     quantity: 1,
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//   },
-//   {
-//     productId: "12",
-//     img: "/images/dogh.png",
-//     name: "doughnut",
-//     vendor: "aries doughnut",
-//     price: 5000,
-//     ratings: "/images/3star.png",
-//     quantity: 1,
-//   },
-// ];
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import useUser from "../../../hooks/useUser";
+import { CartContext } from "../../../CartContext";
+
 
 const link = [
   {
@@ -155,20 +50,40 @@ const vendors = [
 ];
 
 export default function AppLayoutMenu() {
- 
+   const { refetch, setRefetch } = useContext(CartContext);
+const { cart, setCart, addToCart } = useContext(CartContext);
+   const { mutate } = useMutation({
+     mutationFn: addToCart,
+     onSuccess: (data) => {
+       console.log(data);
+       toast.success("Item added to cart successfully");
+     },
+     onError: () => {
+       toast.error("item could'nt be added to cart");
+     },
+   });
   const { allProducts, isLoading } = useProducts();
   const popularMenu = allProducts.slice(0, 8);
-const userId=localStorage.getItem("userId")
-console.log(userId)
+ 
+ const {userId}=useUser()
+
   const [perItem, setPerItem] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+
   const handleClick = function (item) {
-    console.log(item)
-    const { price, name, _id:productId, quantity } = item;
-    setPerItem(item);
+    const { price, name, _id,quantity,image } = item;
+    const items = {
+     productId:_id,
+       productName:name,
+     price:price,
+      quantity:quantity,
+      image:image
+    }
+  
+    setPerItem(items);
     setOpenModal(true);
-    console.log(item);
-    addToCart({userId, price, name,productId, quantity});
+   setRefetch(true)
+    mutate({ userId, price, name, _id, quantity, image });
   };
   const { pathname } = useLocation();
 
@@ -210,7 +125,7 @@ console.log(userId)
                 render={(item) => (
                   <PopularMenu
                     item={item}
-                    key={item.id}
+                    key={item._id}
                     onClick={() => handleClick(item)}    
                   />
                 )}

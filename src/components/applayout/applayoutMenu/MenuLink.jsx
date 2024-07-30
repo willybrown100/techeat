@@ -6,7 +6,7 @@ export default function MenuLink({item}) {
   const currentPath = pathname.split("/").at(3);
   console.log(currentPath);
     const {path,title,img}=item
-    console.log(path)
+    // console.log(path)
 
   return (
   

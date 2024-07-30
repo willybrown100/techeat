@@ -43,8 +43,6 @@ const Contact = () => {
       });
       if (response) {
         console.log(response)
-// const user=JSON.stringify(response)
-queryClient.invalidateQueries({queryKey:["user"]})
 
 // console.log(user)
 localStorage.setItem("userDetails", JSON.stringify(response));
@@ -52,7 +50,8 @@ localStorage.setItem("userDetails", JSON.stringify(response));
         navigate("/appLayout");
       }
     } catch (err) {
-      console.log(err);
+      const error=err
+      console.log(error.message);
     }
 
     reset();
