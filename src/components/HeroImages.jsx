@@ -35,7 +35,7 @@ const surroundingImages = [
 
       observer.observe(node);
 
-      return () => observer.unobserve(node);
+      // return () => observer.unobserve(node);
     }
   }, []);
 
@@ -99,7 +99,7 @@ const surroundingImages = [
 
       observer.observe(node);
 
-      return () => observer.unobserve(node);
+      // return () => observer.unobserve(node);
     }
   }, []);
 

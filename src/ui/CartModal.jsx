@@ -5,7 +5,7 @@ export default function CartModal({ perItem }) {
   // console.log(name);
   return (
     <div className="fixed top-[50%] bg-slate-50 p-8 left-[50%] translate-x-[-50%] text-red-500">
-     {name}
+     {price}
     </div>
   );
 }

@@ -11,9 +11,7 @@ function ContactPage() {
      mutationFn:submitContact,
      onSuccess :(data)=>{
       console.log(data)
-      
        toast.success("your details have been succesfully submited")
-     
     },
     onError:()=>{
       toast.error("details could'nt be submitted")
@@ -59,7 +57,7 @@ function ContactPage() {
                placeholder="enter your email"
                id="email"
                {...register("email")}
-               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] rounded-sm w-full md:p-[4px] p-[8px]"
+               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] rounded-md w-full md:p-[4px] p-[8px]"
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">
@@ -89,7 +87,7 @@ function ContactPage() {
            />
          </div>
          <button className="bg-brand font-semibold capitalize w-full p-2 rounded-md">
-           submit
+           {isPending?"submiting.....":"submit"}
          </button>
        </form>
      </section>

@@ -24,17 +24,24 @@ import AppLayoutMenu from "./components/applayout/applayoutMenu/AppLayoutMenu";
 import BurgerPage from "./components/applayout/applayoutMenu/BurgerPage";
 import SpaghettiPage from "./components/applayout/applayoutMenu/SpaghettiPage";
 import GrillsPage from "./components/applayout/applayoutMenu/GrillsPage";
+import ProtectedRoute from "./ui/ProtectedRoute";
+
+import CartProvider from "./CartContext";
+import AuthUserProvider from "./authUser";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime:0,
+      staleTime:60*1000,
     },
   },
 });
 
 function App() {
   return (
+    <AuthUserProvider>
+
+    <CartProvider>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
@@ -48,13 +55,20 @@ function App() {
             <Route path="TermsOfService" element={<TermsOfService />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
-          <Route path="applayout/*" element={<AppLayout />}>
-            <Route  index element={<Navigate to="home" />} />
-            <Route path="home"  element={<AppLayoutHome />} />
-            <Route path="appmenu/*" element={<AppLayoutMenu />} >
-            <Route path="burger" element={<BurgerPage/>}/>
-            <Route path="spaghetti" element={<SpaghettiPage/>}/>
-            <Route path="grills" element={<GrillsPage/>}/>
+          <Route
+            path="applayout/*"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="home" />} />
+            <Route path="home" element={<AppLayoutHome />} />
+            <Route path="appmenu/*" element={<AppLayoutMenu />}>
+              <Route path="burger" element={<BurgerPage />} />
+              <Route path="spaghetti" element={<SpaghettiPage />} />
+              <Route path="grills" element={<GrillsPage />} />
             </Route>
             <Route path="history" element={<AppLayoutOrderHistory />} />
             <Route path="settings" element={<AppLayoutSettings />} />
@@ -79,9 +93,11 @@ function App() {
               color: "",
             },
           }}
-        />
+          />
       </BrowserRouter>
     </QueryClientProvider>
+          </CartProvider>
+          </AuthUserProvider>
   );
 }
 
