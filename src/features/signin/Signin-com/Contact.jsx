@@ -26,7 +26,7 @@ const Contact = () => {
   } = useForm();
 
   const { fetchData, error, loading } = useFetch(
-    "https://techeat-server-1.onrender.com/api/auth/signin",
+    "https://techeat-server.onrender.com/api/auth/signin",
     "POST"
   );
 

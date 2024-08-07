@@ -9,7 +9,7 @@ export default function CartProvider({children}) {
     const [loading,setLoading]=useState(false)
 const [cart, setCart] = useState(null);
 // const cartid = cart
-console.log(cart, loading);
+
 const [refetch, setRefetch] = useState(false);
 
  async function addToCart({
@@ -25,7 +25,7 @@ const [refetch, setRefetch] = useState(false);
   try {
   
     const response = await fetch(
-      "https://techeat-server-1.onrender.com/api/products/add-cart",
+      "https://techeat-server.onrender.com/api/products/add-cart",
       {
         method: "POST",
         headers: {
@@ -56,11 +56,11 @@ const [refetch, setRefetch] = useState(false);
       try {
           setLoading(true);
         const response = await fetch(
-          `https://techeat-server-1.onrender.com/api/products/carts/${userId}`
+          `https://techeat-server.onrender.com/api/products/carts/${userId}`
         );
         const data = await response.json();
 
-        console.log(data);
+       
         setCart(data?.cart);
 
         return data;
@@ -70,32 +70,78 @@ const [refetch, setRefetch] = useState(false);
           setLoading(false);
       }
     }
-  async function deleteCart({itemId:cartId,productId}) {
-    console.log(cartId,productId)
+
+
+  async function deleteCart(itemId) {
+    console.log(itemId)
     try {
       const response = await fetch(
-        `https://techeat-server-1.onrender.com/api/products/remove-cart`,
+        `https://techeat-server.onrender.com/api/products/remove-cart`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ cartId, productId }),
+          body: JSON.stringify({ itemId }),
         }
       );
       const data = await response.json();
 
       console.log(data);
-      setCart(data?.cart);
-
+  
+getUserCart(userId)
       return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+ async function updateCartItem({ itemId }) {
+   console.log(itemId);
+   try {
+     const response = await fetch(
+       `https://techeat-server.onrender.com/api/products/update-carts/${itemId}`,
+       {
+         method: "PUT",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ action: "increment" }),
+       }
+     );
+     const data = await response.json();
+
+     console.log(data);
+     return data;
+   } catch (error) {
+     console.log(error);
+   }
+ }
+
+  async function craeteOrder(data) {
+  // console.log(data)
+    try {
+      const response = await fetch(
+        `https://techeat-server.onrender.com/api/orders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+
+      console.log(result);
+
+      return result;
     } catch (error) {
       console.log(error);
     }
   }
   return (
     <CartContext.Provider
-      value={{ cart, setCart, refetch, addToCart, setRefetch,deleteCart,getUserCart }}
+      value={{ cart, setCart, refetch, addToCart,craeteOrder,updateCartItem, setRefetch,deleteCart,getUserCart }}
     >
       {children}
     </CartContext.Provider>

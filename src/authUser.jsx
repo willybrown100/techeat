@@ -12,7 +12,7 @@ export default function AuthUserProvider({children}) {
      try {
            setLoading(true);
        const response = await fetch(
-         "https://techeat-server-1.onrender.com/api/auth/logout",
+         "https://techeat-server.onrender.com/api/auth/logout",
          {
            method: "POST",
            headers: {

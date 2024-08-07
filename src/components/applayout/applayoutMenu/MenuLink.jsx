@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 export default function MenuLink({item}) {
   const {pathname}= useLocation()
   const currentPath = pathname.split("/").at(3);
-  console.log(currentPath);
+ 
     const {path,title,img}=item
     // console.log(path)
 

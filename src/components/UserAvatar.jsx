@@ -10,16 +10,16 @@ import MiniLoader from '../ui/MiniLoader';
 
 export default function UserAvatar() {
 const { userData ,loading,setUserData,setLoading} = useContext(UserContext);
-console.log(loading)
+
   
    const { authUserData, userId } = useUser();
-
+console.log(authUserData)
    useEffect(() => {
      async function getUser() {
        try {
          setLoading(true);
          const response = await fetch(
-           `https://techeat-server-1.onrender.com/api/auth`,
+           `https://techeat-server.onrender.com/api/auth`,
            {
              headers: {
                Authorization: `Bearer ${authUserData?.token}`,
@@ -28,7 +28,7 @@ console.log(loading)
          );
          const data = await response.json();
          setUserData(data.user);
-
+console.log(data)
          return data;
        } catch (error) {
          console.log(error);
@@ -44,7 +44,7 @@ console.log(loading)
     { loading? <MiniLoader/>:
         <div className="md:flex gap-x-2 hidden  items-center">
           <img
-            src="/images/avatar.png "
+            src={userData?.profilePhoto}
             className="w-7 rounded-full h-7"
             alt="img"
           />

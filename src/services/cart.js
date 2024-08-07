@@ -1,4 +1,4 @@
-import { isAction } from "@reduxjs/toolkit";
+// import { isAction } from "@reduxjs/toolkit";
 import { CartContext } from "../CartContext";
 import { useContext } from "react";
 
@@ -10,7 +10,7 @@ import { useContext } from "react";
  export async function getUserCart() {
   try {
     const response = await fetch(
-      `https://techeat-server-1.onrender.com/api/products/carts/${userId}`
+      `https://techeat-server.onrender.com/api/products/carts/${userId}`
     );
     const data = await response.json();
  
@@ -25,13 +25,13 @@ import { useContext } from "react";
    console.log(itemId);
    try {
      const response = await fetch(
-       `https://techeat-server-1.onrender.com/api/products/update-carts/${itemId}`,
+       `https://techeat-server.onrender.com/api/products/update-carts/${itemId}`,
        {
          method: "PUT",
          headers: {
            "Content-Type": "application/json",
          },
-         body: JSON.stringify({action:"increment"}),
+         body: JSON.stringify({ action: "increment" }),
        }
      );
      const data = await response.json();
@@ -42,17 +42,18 @@ import { useContext } from "react";
      console.log(error);
    }
  }
+
  export async function decreaseCartItem({itemId}) {
    console.log(itemId);
    try {
      const response = await fetch(
-       `https://techeat-server-1.onrender.com/api/products/update-carts/${itemId}`,
+       `https://techeat-server.onrender.com/api/products/update-carts/${itemId}`,
        {
          method: "PUT",
          headers: {
            "Content-Type": "application/json",
          },
-         body: JSON.stringify({action:"decrement"}),
+         body: JSON.stringify({ action: "decrement" }),
        }
      );
      const data = await response.json();

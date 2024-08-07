@@ -17,7 +17,7 @@ function HomePage() {
    <OurVendors/>
    <PromoSection/>
    <Aboutus/>
-   {/* <Footer/> */}
+
    </section>
  );
 }

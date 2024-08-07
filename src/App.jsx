@@ -18,7 +18,7 @@ import RootLayout from "./Layouts/RootLayout";
 import AppLayoutHome from "./components/applayout/applayouthome/AppLayoutHome";
 import AppLayoutOrderHistory from "./components/applayout/AppLayoutOrderHistory";
 import AppLayoutHelp from "../src/components/applayout/applayoutHelp/AppLayoutHelp";
-import AppLayoutLogout from "./components/applayout/AppLayoutLogout";
+
 import AppLayoutSettings from "./components/applayout/AppLayoutSettings";
 import AppLayoutMenu from "./components/applayout/applayoutMenu/AppLayoutMenu";
 import BurgerPage from "./components/applayout/applayoutMenu/BurgerPage";
@@ -28,6 +28,10 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 
 import CartProvider from "./CartContext";
 import AuthUserProvider from "./authUser";
+import Checkout from "./components/Checkout";
+import CartPage from "./components/cart/CartPage";
+import AppHome from "./components/applayout/applayouthome/AppHome";
+import Faq from "./components/applayout/applayoutHelp/Faq";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -64,16 +68,23 @@ function App() {
             }
           >
             <Route index element={<Navigate to="home" />} />
-            <Route path="home" element={<AppLayoutHome />} />
+            <Route path="home" element={<AppLayoutHome />} >
+            <Route index element={<Navigate to="apphome" />} />
+            <Route path="apphome" index element={<AppHome/>}/>
+            <Route path="cart" element={<CartPage/>}/>
+            </Route>
             <Route path="appmenu/*" element={<AppLayoutMenu />}>
               <Route path="burger" element={<BurgerPage />} />
               <Route path="spaghetti" element={<SpaghettiPage />} />
               <Route path="grills" element={<GrillsPage />} />
+            <Route path="checkout" element={<Checkout />} />
             </Route>
             <Route path="history" element={<AppLayoutOrderHistory />} />
             <Route path="settings" element={<AppLayoutSettings />} />
-            <Route path="help" element={<AppLayoutHelp />} />
-            <Route path="logout" element={<AppLayoutLogout />} />
+            <Route path="help" element={<AppLayoutHelp />} >
+            <Route path="faq" element={<Faq/>}/>
+            </Route>
+            
           </Route>
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<Signin />} />
