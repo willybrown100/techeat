@@ -7,6 +7,7 @@ import {
   HiOutlineShoppingCart,
 } from "react-icons/hi2";
 import UserAvatar from "../UserAvatar";
+import { Link } from "react-router-dom";
 
 
 export default function AppLayoutNav() {
@@ -29,9 +30,11 @@ export default function AppLayoutNav() {
           </div>
         </form>
         <div className="flex items-center gap-x-4">
-          <HiOutlineShoppingCart className="bg-white rounded-full text-brand h-6 p-1 w-6" />
+          <Link to="/appLayout/home/cart">
+            <HiOutlineShoppingCart className="bg-white rounded-full text-brand h-6 p-1 w-6" />
+          </Link>
           <button>
-          <HiOutlineBell className="text-brand bg-white  rounded-full w-6 h-6 p-1" />
+            <HiOutlineBell className="text-brand bg-white  rounded-full w-6 h-6 p-1" />
           </button>
           <UserAvatar />
         </div>

@@ -3,7 +3,7 @@ import { FilterRounded } from "@mui/icons-material";
 export async function products(page) {
   try {
     const response = await fetch(
-      `https://techeat-server-1.onrender.com/api/products
+      `https://techeat-server.onrender.com/api/products
 `
     );
     const data = await response.json();

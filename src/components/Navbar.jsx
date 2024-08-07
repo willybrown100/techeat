@@ -13,8 +13,8 @@ import { UserContext } from '../authUser';
 function Navbar() {
   // const { authUserData } = useUser();
   const { authUserData, userId } = useUser();
-  const { userData, loading, setUserData, setLoading } = useContext(UserContext);
   const session= authUserData?.token
+  const { userData, loading, setUserData, setLoading } = useContext(UserContext);
  const [isFixed, setIsFixed] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 

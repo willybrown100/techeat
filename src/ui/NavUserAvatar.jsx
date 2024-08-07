@@ -2,6 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../authUser';
 import useUser from '../hooks/useUser';
 import MiniLoader from './MiniLoader';
+import Modal from './Modal';
+import { HiChevronDown } from 'react-icons/hi2';
+import UserNavModal from './UserNavModal';
 
 export default function NavUserAvatar() {
 
@@ -39,16 +42,28 @@ export default function NavUserAvatar() {
   return (
     <div className="md:flex gap-x-2 hidden  items-center">
       <img
-        src="/images/avatar.png "
+        src={userData.profilePhoto}
         className="w-7 rounded-full h-7"
         alt="img"
       />
       <h5 className="font-semibold mb-0 tracking-wide text-black font-headings capitalize">
         {userData?.name}
       </h5>
-      {/* <HiChevronDown className="text-black " /> */}
-      {/* <NavigateBtn /> */}
-      <button>^</button>
+  
+     <NavDropDown/>
     </div>
+  );
+}
+
+function NavDropDown() {
+  return (
+    <Modal>
+      <Modal.Open opens="PageUserModal">
+        <HiChevronDown className="text-stone-900 " />
+      </Modal.Open>
+      <Modal.Window name="PageUserModal">
+        <UserNavModal />
+      </Modal.Window>
+    </Modal>
   );
 }

@@ -1,4 +1,4 @@
-import React, { cloneElement, createContext, useContext, useState } from 'react'
+import React, { cloneElement, createContext, useContext, useEffect, useRef, useState } from 'react'
 
 const ModalContext= createContext()
 export default function Modal({children}){
@@ -13,14 +13,25 @@ return <ModalContext.Provider value={{openName,open,close,setOpenName}}>
 </ModalContext.Provider>
 }
 function Open({children,opens}){
-const {open}=useContext(ModalContext)
+const {open,close}=useContext(ModalContext)
 return cloneElement(children,{onClick:()=>open(opens)})
 }
  function Window({children,name}) {
-    const { openName } = useContext(ModalContext);
-    if(name !== openName)return null
+   const { openName, close} = useContext(ModalContext);
+  const ref=useRef()
+  useEffect(()=>{
+  const handleClick = function(e){
+    if(ref.current&&!ref.current.contains(e.target)){
+  close();
+    } 
+  }
+document.addEventListener("click",handleClick,true)
+return () => document.removeEventListener("click", handleClick ,true);
+},[close])
+
+    if(name !== openName) return null
   return (
-    <div>
+    <div ref={ref}>
 
     {children}
     </div>

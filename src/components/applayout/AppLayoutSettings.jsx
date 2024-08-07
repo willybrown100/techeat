@@ -7,33 +7,45 @@ export default function AppLayoutSettings() {
     <main className={`${className}`}>
       <h3 className="text-brand font-headings font-semibold">account</h3>
       <div className="flex items-center">
-        <div className="border-brand border-[1px] w-[8rem]">
+        <div className="relative  rounded-full">
           <img
             src="/images/avatar.png"
             alt="img"
-            className="w-full border-brand "
+            className=" w-[8rem] h-[8rem] border-brand rounded-full "
           />
+          <button className='absolute bottom-1 left-[6rem]'>
+            <img src='/images/usericon.png' alt='img'/>
+          </button>
         </div>
-        <form>
-          <input
-            type="file"
-            accept="image"
-            id="file"
-            className="placeholder:text-transparent text-transparent"
-          />
-        </form>
-        <button className="text-brand border-brand border-[1px] p-2 rounded-md capitalize ">
-          delete avatar
-        </button>
       </div>
       <form className="">
         <div className="grid grid-cols-2 my-5  gap-y-20 gap-4">
           <div className="flex flex-col">
-            <label className="capitalize font-semibold text-black">name</label>
+            <label className="capitalize font-semibold rounded-md text-black">
+              first name
+            </label>
             <input
               type="text"
               placeholder=""
-              className="outline-brand p-1 rounded-sm border-brand border-[1px]"
+              className="outline-brand p-1 rounded-md border-stone-600 border-[1px]"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="capitalize font-semibold rounded-md text-black">
+              last name
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              className="outline-brand p-1 rounded-md border-stone-600 border-[1px]"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="capitalize font-semibold text-black">email</label>
+            <input
+              type="text"
+              placeholder="+234"
+              className="outline-brand placeholder:text-[1rem] p-1 rounded-md border-stone-600 border-[1px]"
             />
           </div>
           <div className="flex flex-col">
@@ -41,18 +53,9 @@ export default function AppLayoutSettings() {
               phone number
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="+234"
-              className="outline-brand placeholder:text-[1rem] p-1 rounded-sm border-brand border-[1px]"
-            />
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <label className="capitalize font-semibold text-black">email</label>
-            <input
-              type="email"
-              placeholder=""
-              disabled
-              className="outline-brand p-1 rounded-sm border-brand border-[1px]"
+              className="outline-brand placeholder:text-[1rem] p-1 rounded-md border-stone-600 border-[1px]"
             />
           </div>
           <div className="flex flex-col gap-y-2">
@@ -60,30 +63,29 @@ export default function AppLayoutSettings() {
               password
             </label>
             <input
-              type="text"
+              type="email"
               placeholder=""
-              className="outline-brand p-1 rounded-sm border-brand border-[1px]"
+              disabled
+              className="outline-brand p-1 rounded-md border-stone-600 border-[1px]"
             />
           </div>
-        </div>
-          <div className="flex flex-col my-12 gap-y-2">
+          <div className="flex flex-col gap-y-2">
             <label className="capitalize font-semibold text-black">
               delivery address
             </label>
             <input
               type="text"
               placeholder=""
-              className="outline-brand w-f p-1 rounded-sm border-brand border-[1px]"
+              className="outline-brand p-1 rounded-md border-stone-600 border-[1px]"
             />
           </div>
-          <div className='flex flex-col '>
-          <button className='text-brand capitalize font-semibold text-left'>delete your account</button>
-          <span className='text-sm capitalize mb-2 text-black'>by deleting your account you will loose all your data</span>
-          </div>
-          <div className='flex gap-x-3 items-center'>
-<button type='reset' className='bg-stone-300 rounded-md font-semibold px-6 p-1 text-brandhover capitalize'>cancel</button>
-<button className=' rounded-md px-6 p-1 capitalize bg-brandhover text-white'>save</button>
-          </div>
+        </div>
+
+        <div className="flex gap-x-3 justify-center items-center">
+          <button className=" rounded-md px-6 p-1 capitalize border border-brand  text-red-500">
+            <span>delete account</span> <span></span>
+          </button>
+        </div>
       </form>
     </main>
   );

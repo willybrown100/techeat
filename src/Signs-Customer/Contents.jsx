@@ -40,15 +40,13 @@ const dispatch = useDispatch()
     // );
     try {
       const response = await fetchData(
-        "https://techeat-server-1.onrender.com/api/auth/register",
+        "https://techeat-server.onrender.com/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
             email: data.Email,
             password: data.Password,
             name: data.UserName,
-
-
           }),
           headers: {
             "Content-Type": "application/json",

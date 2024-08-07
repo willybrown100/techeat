@@ -7,23 +7,35 @@ import useUser from "../../hooks/useUser";
 import { CartContext } from "../../CartContext";
 import Modal from "../../ui/Modal";
 import CheckoutPage from "../../ui/CheckoutPage";
+import LoadingSpinner from "../../ui/LoadingSpinner";
+import { formatter } from "../../utils/currencyFormatter";
+import { Link, useNavigate } from "react-router-dom";
 // import { useDispatch, useSelector } from 'react-redux';
 
 export default function Mycart() {
   const { userId } = useUser();
-
-  const { cart, setCart, getUserCart } = useContext(CartContext);
+  const navigate = useNavigate()
+  const [check,setCheck]=useState(false)
+  const { cart, setCart, getUserCart,loading } = useContext(CartContext);
   const totalCost = cart?.reduce((acc, product) => acc + product.totalPrice, 0);
-  console.log(totalCost);
-  console.log(cart);
+  
+ 
+ 
 
   useEffect(() => {
-
     getUserCart(userId);
-  }, [ userId]);
+  }, [userId, getUserCart]);
+
+
+  const handleClick =()=>{
+    setCheck(true)
+  }
+useEffect(()=>{
+if(check) navigate("/appLayout/appmenu/checkout")
+},[check])
 
   return (
-    <div className="bg-white p-2">
+    <div className="bg-white h-full p-2 ">
       <h4 className="text-black mt-2 font-semibold ml-2">my orders</h4>
 
       {cart && (
@@ -40,24 +52,34 @@ export default function Mycart() {
                 <span className="text-stone-700 capitalize font-semibold">
                   sub total
                 </span>
-                <span className="text-black">x</span>
+                <span className="text-black">
+                 
+                  {formatter.format(totalCost)}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-stone-700 capitalize font-semibold">
                   discount{" "}
                 </span>
-                <span className="text-black font-semibold">x</span>
+                <span className="text-black font-semibold">500</span>
               </div>
             </div>
             <div className="flex justify-between">
               <span className="text-black capitalize font-semibold">
                 total cost{" "}
               </span>
-              <span className="text-black font-semibold">{totalCost}</span>
+              <span className="text-black font-semibold">
+                {formatter.format(totalCost)}
+              </span>
             </div>
           </div>
           <div className="mt-4 flex flex-col gap-2">
-            <Button>checkout</Button>
+            <button
+              onClick={handleClick}
+              className="bg-brand text-center capitalize font-semibold text-white rounded-md p-2"
+            >
+              checkout
+            </button>
             <button className="shadow-lg text-brand capitalize font-semibold p-2 rounded-md">
               clear order
             </button>
