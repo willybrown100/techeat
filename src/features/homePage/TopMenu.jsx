@@ -39,15 +39,17 @@ const menu = [
  
 ];
 function TopMenu() {
+
+
   const className = "max-w-[1170px] w-[90vw] py-4 m-auto";
   return (
     <section className={`${className}`}>
       <div className="my-6 ">
-        <div className="w-[11rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
+        <div className="w-[13rem] h-[0.2rem] hidden md:block bg-brand m-auto"></div>
         <h3 className="text-brand my-1 mb-1 font-headings font-semibold text-center">
           our top menu
         </h3>
-        <div className="w-[11rem] hidden md:block h-[0.2rem] bg-brand m-auto"></div>
+        <div className="w-[13rem] hidden md:block h-[0.2rem] bg-brand m-auto"></div>
       </div>
       <Carousel
         responsive={responsive}

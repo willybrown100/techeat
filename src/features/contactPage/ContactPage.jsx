@@ -7,20 +7,20 @@ import toast from "react-hot-toast";
 function ContactPage() {
    const className = "max-w-[1170px]   w-[90vw] py-4 m-auto";
    const {register,reset,handleSubmit}=useForm()
-   const {mutate}= useMutation({
+   const {mutate,isPending}= useMutation({
      mutationFn:submitContact,
-     onSuccess :()=>{
+     onSuccess :(data)=>{
+      console.log(data)
        toast.success("your details have been succesfully submited")
-       reset()
     },
     onError:()=>{
-      toast.error("error")
+      toast.error("details could'nt be submitted")
     }
   })
   const onSubmit = function(data){
-   mutate(data)
+   mutate(data,{onSettled:()=>reset()})
    console.log(data)
-  //  console.log()
+
   }
  return (
    <>
@@ -57,7 +57,7 @@ function ContactPage() {
                placeholder="enter your email"
                id="email"
                {...register("email")}
-               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] capitalize rounded-sm w-full md:p-[4px] p-[8px]"
+               className="block bg-stone-200 text-black placeholder:pl-4 placeholder:text-[0.9rem] rounded-md w-full md:p-[4px] p-[8px]"
              />
            </div>
            <div className="flex flex-col  md:gap-y-0 w-full">
@@ -80,14 +80,14 @@ function ContactPage() {
            </label>
            <textarea
              type="text"
-             id="message"JJJJJKKKKKKKKKIKJI
+             id="message"
              {...register("message")}
              placeholder="enter your message"
              className="w-full block text-black placeholder:text-[0.9rem] capitalize placeholder:pl-4 placeholder  border-0 mb-4 h-24 bg-stone-200 rounded-md  p-2 "
            />
          </div>
          <button className="bg-brand font-semibold capitalize w-full p-2 rounded-md">
-           submit
+           {isPending?"submiting.....":"submit"}
          </button>
        </form>
      </section>

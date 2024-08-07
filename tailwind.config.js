@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         brand: "#F16331",
+        brandhover: "#c14f27",
         Btnhover: "#e97950",
       },
     },

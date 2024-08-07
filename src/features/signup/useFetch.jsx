@@ -1,30 +1,29 @@
 import { useState } from 'react';
-import axios from 'axios';
 
-const useFetch = (url, method) => {
-  const [loading, setLoading] = useState(false);
+const useFetch = () => {
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = async (data) => {
+  const fetchData = async (url, options) => {
     setLoading(true);
-    setError(null);
-
     try {
-      const res = await axios({
-        url,
-        method,
-        data
-      });
-      setResponse(res);
-    } catch (err) {
-      setError(err);
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const result = await response.json();
+      setData(result);
+      return result;
+    } catch (error) {
+      setError(error);
+      throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  return { loading, error, response, fetchData };
+  return { data, error, loading, fetchData };
 };
 
 export default useFetch;

@@ -17,6 +17,7 @@ function AboutUs() {
    <header className="aboutUs text-black grid place-items-center">
    <h1 className="capitalize text-white font-headings">we are tech eat</h1>
    </header>
+   <h1 className="capitalize text-center font-semibold text-brand md:hidden font-headings">we are tech eat</h1>
 <OurStory/>
 <VisionandMission/>
 <OurCoreValues/>

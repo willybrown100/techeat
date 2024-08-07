@@ -1,6 +1,18 @@
 import {CricleImagesLarge }   from "./HeroImages";
 import Button from "../ui/Button"
+// import WordPullUp from "@/components/magicui/word-pull-up";
 import CricleImages from "./HeroImages";
+
+
+// export async function WordPullUpDemo() {
+//   return (
+//     <WordPullUp
+//       className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
+//       words="Word Pull Up"
+//     />
+//   );
+// }
+
 
 function Header() {
 
